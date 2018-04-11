@@ -24,10 +24,18 @@ const loginStyle = {
     marginRight: '5px'
   },
   inputAdornment: {
-    marginRight: '18px'
+    marginRight: '8px'
+  },
+  inputAdornmentRTL: {
+    marginLeft: '0px',
+    marginRight: '0px'
   },
   inputAdornmentIcon: {
     color: '#555'
+  },
+  inputAdornmentIconRTL: {
+    color: '#555',
+    marginLeft: '10px'
   },
   cardHidden: {
     opacity: '0',

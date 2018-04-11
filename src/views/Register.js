@@ -15,6 +15,7 @@ import LockOutline from 'material-ui-icons/LockOutline';
 import Check from 'material-ui-icons/Check';
 
 // core components
+import I18n from '../components/I18n/I18n';
 import GridContainer from '../components/Grid/GridContainer';
 import ItemGrid from '../components/Grid/ItemGrid';
 import RegularCard from '../components/Cards/RegularCard';
@@ -51,13 +52,13 @@ class Register extends Component {
     console.log(response);
   };
   render() {
-    const { classes } = this.props;
+    const { lng, classes } = this.props;
     return (
       <div className={`${classes.container} animated fadeIn`}>
         <GridContainer justify="center">
           <ItemGrid xs={12} sm={12} md={5}>
             <RegularCard
-              cardTitle="Register"
+              cardTitle={I18n.t('register.label', { lng })}
               titleAlign="center"
               customCardTitleClasses={classes.cardTitle}
               customCardClasses={classes.cardClasses}
@@ -90,10 +91,13 @@ class Register extends Component {
                           <i className="fab fa-google" />
                         </IconButton>
                       </GoogleLogin>{' '}
-                      <h4 className={classes.socialTitle}>Or Be Classical</h4>
+                      <h4 className={classes.socialTitle}>
+                        {I18n.t('orBeClassical.label', { lng })}
+                      </h4>
                     </div>
                     <form className={classes.form}>
                       <CustomInput
+                        rtlActive={lng === 'ar'}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
@@ -102,15 +106,20 @@ class Register extends Component {
                           startAdornment: (
                             <InputAdornment
                               position="start"
-                              className={classes.inputAdornment}
+                              className={
+                                lng === 'ar'
+                                  ? classes.inputAdornmentRTL
+                                  : classes.inputAdornment
+                              }
                             >
                               <Face className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: 'Full Name...'
+                          placeholder: I18n.t('fullName.label', { lng })
                         }}
                       />
                       <CustomInput
+                        rtlActive={lng === 'ar'}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
@@ -119,15 +128,20 @@ class Register extends Component {
                           startAdornment: (
                             <InputAdornment
                               position="start"
-                              className={classes.inputAdornment}
+                              className={
+                                lng === 'ar'
+                                  ? classes.inputAdornmentRTL
+                                  : classes.inputAdornment
+                              }
                             >
                               <Email className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: 'Email...'
+                          placeholder: I18n.t('email.label', { lng })
                         }}
                       />
                       <CustomInput
+                        rtlActive={lng === 'ar'}
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
@@ -136,14 +150,18 @@ class Register extends Component {
                           startAdornment: (
                             <InputAdornment
                               position="start"
-                              className={classes.inputAdornment}
+                              className={
+                                lng === 'ar'
+                                  ? classes.inputAdornmentRTL
+                                  : classes.inputAdornment
+                              }
                             >
                               <LockOutline
                                 className={classes.inputAdornmentIcon}
                               />
                             </InputAdornment>
                           ),
-                          placeholder: 'Password...'
+                          placeholder: I18n.t('password.label', { lng })
                         }}
                       />
                       <FormControlLabel
@@ -166,13 +184,17 @@ class Register extends Component {
                         }
                         label={
                           <span>
-                            I agree to the{' '}
-                            <a href="#pablo">terms and conditions</a>.
+                            {I18n.t('iAgreeToThe.label', { lng })}{' '}
+                            <a href="#">
+                              {I18n.t('termsAndConditions.label', { lng })}
+                            </a>.
                           </span>
                         }
                       />
                       <div className={classes.center}>
-                        <Button color="rose">Get started</Button>
+                        <Button color="rose">
+                          {I18n.t('getStarted.label', { lng })}
+                        </Button>
                       </div>
                     </form>
                   </ItemGrid>

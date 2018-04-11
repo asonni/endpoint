@@ -34,11 +34,11 @@ const CustomInput = ({ ...props }) => {
     [' ' + classes.labelRootSuccess]: success && !error
   });
 
-  const inkbarClasses = cx({
-    [classes.inkbarError]: error,
-    [classes.inkbarSuccess]: success && !error,
-    [classes.inkbar]: !success && !error
-  });
+  // const inkbarClasses = cx({
+  //   [classes.inkbarError]: error,
+  //   [classes.inkbarSuccess]: success && !error,
+  //   [classes.inkbar]: !success && !error
+  // });
   var formControlClasses = classes.formControl;
   if (formControlProps !== undefined) {
     formControlClasses += ' ' + formControlProps.className;
@@ -112,8 +112,8 @@ const CustomInput = ({ ...props }) => {
         classes={{
           input: input,
           disabled: classes.disabled,
-          underline: underlineClasses,
-          inkbar: inkbarClasses
+          underline: underlineClasses
+          // inkbar: inkbarClasses
         }}
         id={id}
         {...inputProps}

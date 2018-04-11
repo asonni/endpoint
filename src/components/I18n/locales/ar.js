@@ -1,7 +1,8 @@
 const ar = {
   translation: {
     language: { label: 'English' },
-    appName: { label: 'Addabba' },
+    appName: { label: 'الدابة' },
+    welcomeTo: { label: 'مرجبا بك في' },
     // Header Translations
     home: { label: 'الصفحة الرئيسية' },
     login: { label: 'تسجيل الدخول' },
@@ -23,7 +24,16 @@ const ar = {
     latestTrips: { label: 'أحدث الرحلات' },
     profilePicture: { label: 'الصوره الشخصيه' },
     rating: { label: 'تصنيف' },
-    sendRequest: { label: 'إرسال طلب' }
+    sendRequest: { label: 'إرسال طلب' },
+    // Login/Register Translations
+    orBeClassical: { label: 'أو كن كلاسيكي' },
+    email: { label: 'البريد الإلكتروني...' },
+    password: { label: 'كلمه المرور...' },
+    letsGo: { label: 'دخول' },
+    fullName: { label: 'الاسم الكامل...' },
+    getStarted: { label: 'البدء' },
+    iAgreeToThe: { label: 'أنا أوافق على' },
+    termsAndConditions: { label: 'الشروط والأحكام' }
   }
 };
 

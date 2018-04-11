@@ -2,6 +2,7 @@ const en = {
   translation: {
     language: { label: 'العربية' },
     appName: { label: 'Addabba' },
+    welcomeTo: { label: 'Welcome To' },
     // Header Translations
     home: { label: 'Home' },
     login: { label: 'Login' },
@@ -23,7 +24,16 @@ const en = {
     latestTrips: { label: 'Latest Trips' },
     profilePicture: { label: 'Profile Picture' },
     rating: { label: 'Rating' },
-    sendRequest: { label: 'Send Request' }
+    sendRequest: { label: 'Send Request' },
+    // Login/Register Translations
+    orBeClassical: { label: 'Or Be Classical' },
+    email: { label: 'Email...' },
+    password: { label: 'Password...' },
+    letsGo: { label: "Let's Go" },
+    fullName: { label: 'Full Name...' },
+    getStarted: { label: 'Get Started' },
+    iAgreeToThe: { label: 'I agree to the' },
+    termsAndConditions: { label: 'terms and conditions' }
   }
 };
 

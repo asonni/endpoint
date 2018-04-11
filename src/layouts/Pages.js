@@ -8,6 +8,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import withStyles from 'material-ui/styles/withStyles';
 
 // core components
+import I18n from '../components/I18n/I18n';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
@@ -18,12 +19,21 @@ import pagesStyle from '../assets/jss/layouts/pagesStyle';
 class Pages extends Component {
   state = { lng: 'en' };
   onLanguageChanged = () => {
-    if (this.state.lng === 'en') {
+    const { lng } = this.state;
+    if (lng === 'en') {
       this.setState({ lng: 'ar' });
       document.body.classList.add('rtl');
+      document.title = `${I18n.t('welcomeTo.label', { lng: 'ar' })} ${I18n.t(
+        'appName.label',
+        { lng: 'ar' }
+      )}`;
     } else {
       this.setState({ lng: 'en' });
       document.body.classList.remove('rtl');
+      document.title = `${I18n.t('welcomeTo.label', { lng: 'en' })} ${I18n.t(
+        'appName.label',
+        { lng: 'en' }
+      )}`;
     }
   };
   render() {

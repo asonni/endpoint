@@ -11,6 +11,7 @@ import Email from 'material-ui-icons/Email';
 import LockOutline from 'material-ui-icons/LockOutline';
 
 // core components
+import I18n from '../components/I18n/I18n';
 import GridContainer from '../components/Grid/GridContainer';
 import ItemGrid from '../components/Grid/ItemGrid';
 import LoginCard from '../components/Cards/LoginCard';
@@ -45,7 +46,7 @@ class Login extends Component {
     console.log(response);
   };
   render() {
-    const { classes } = this.props;
+    const { lng, classes } = this.props;
     return (
       <div className={`${classes.content} animated fadeIn`}>
         <div className={classes.container}>
@@ -53,13 +54,13 @@ class Login extends Component {
             <ItemGrid xs={12} sm={6} md={4}>
               <LoginCard
                 headerColor="rose"
-                cardTitle="Login"
-                cardSubtitle="Or Be Classical"
+                cardTitle={I18n.t('login.label', { lng })}
+                cardSubtitle={I18n.t('orBeClassical.label', { lng })}
                 customCardClass={classes.cardClasses}
                 footerAlign="center"
                 footer={
                   <Button color="rose" wd>
-                    Let's Go
+                    {I18n.t('letsGo.label', { lng })}
                   </Button>
                 }
                 socials={
@@ -99,33 +100,61 @@ class Login extends Component {
                 content={
                   <Fragment>
                     <CustomInput
-                      labelText="Email"
+                      rtlActive={lng === 'ar'}
+                      labelText=""
                       id="email"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <Email className={classes.inputAdornmentIcon} />
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            className={
+                              lng === 'ar'
+                                ? classes.inputAdornmentRTL
+                                : classes.inputAdornment
+                            }
+                          >
+                            <Email
+                              className={
+                                lng === 'ar'
+                                  ? classes.inputAdornmentIconRTL
+                                  : classes.inputAdornmentIcon
+                              }
+                            />
                           </InputAdornment>
-                        )
+                        ),
+                        placeholder: I18n.t('email.label', { lng })
                       }}
                     />
                     <CustomInput
-                      labelText="Password"
+                      rtlActive={lng === 'ar'}
+                      labelText=""
                       id="password"
                       formControlProps={{
                         fullWidth: true
                       }}
                       inputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
+                        startAdornment: (
+                          <InputAdornment
+                            position="start"
+                            className={
+                              lng === 'ar'
+                                ? classes.inputAdornmentRTL
+                                : classes.inputAdornment
+                            }
+                          >
                             <LockOutline
-                              className={classes.inputAdornmentIcon}
+                              className={
+                                lng === 'ar'
+                                  ? classes.inputAdornmentIconRTL
+                                  : classes.inputAdornmentIcon
+                              }
                             />
                           </InputAdornment>
-                        )
+                        ),
+                        placeholder: I18n.t('password.label', { lng })
                       }}
                     />
                   </Fragment>

@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'JFFlat';
+  src: url('../fonts/JF-Flat-regular.ttf') format('truetype');
+}
+footer,
+header,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+span,
+th,
+td,
+ul,
+li,
+p,
+html,
+label,
+::-webkit-input-placeholder {
+  /* font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; */
+  font-family: 'JFFlat', sans-serif !important;
+  font-weight: 300;
+  line-height: 1.5em;
+}
 .rtl {
   direction: rtl;
 }

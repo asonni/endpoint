@@ -40,6 +40,12 @@ const registerPageStyle = {
     top: '18px',
     position: 'relative'
   },
+  inputAdornmentRTL: {
+    marginLeft: '18px',
+    marginRight: '0px',
+    top: '18px',
+    position: 'relative'
+  },
   inputAdornmentIcon: {
     color: '#555'
   },
@@ -51,6 +57,10 @@ const registerPageStyle = {
   },
   checkboxLabel: {
     marginLeft: '6px',
+    color: 'rgba(0, 0, 0, 0.26)'
+  },
+  checkboxLabelRTL: {
+    marginRight: '6px',
     color: 'rgba(0, 0, 0, 0.26)'
   },
   ...customCheckboxRadioSwitch,
