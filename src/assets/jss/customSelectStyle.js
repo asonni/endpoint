@@ -84,6 +84,25 @@ const customSelectStyle = {
       ...primaryBoxShadow
     }
   },
+  selectMenuItemRTL: {
+    textAlign: 'right',
+    fontSize: '13px',
+    padding: '10px 20px',
+    margin: '0 5px',
+    borderRadius: '2px',
+    transition: 'all 150ms linear',
+    display: 'block',
+    clear: 'both',
+    fontWeight: '400',
+    lineHeight: '2',
+    whiteSpace: 'nowrap',
+    color: '#333',
+    '&:hover': {
+      backgroundColor: primaryColor,
+      color: '#FFFFFF',
+      ...primaryBoxShadow
+    }
+  },
   selectMenuItemSelected: {
     backgroundColor: primaryColor + '!important',
     color: '#FFFFFF'

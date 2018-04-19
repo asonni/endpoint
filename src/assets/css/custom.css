@@ -20,6 +20,7 @@ li,
 p,
 html,
 label,
+.btn,
 ::-webkit-input-placeholder {
   /* font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; */
   font-family: 'JFFlat', sans-serif !important;

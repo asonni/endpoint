@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import SweetAlert from 'react-bootstrap-sweetalert';
 
 // material-ui components
 import withStyles from 'material-ui/styles/withStyles';
@@ -24,8 +26,10 @@ import Button from '../components/CustomButtons/Button';
 import Table from '../components/Table/Table';
 import IconCard from '../components/Cards/IconCard';
 import StatsCard from '../components/Cards/StatsCard';
+import SnackbarContent from '../components/Snackbar/SnackbarContent';
 // import Popover from '../components/Popover/Popover';
 
+import { fetchCurrentUser, resendActivationEmail } from '../actions/user';
 import homeStyle from '../assets/jss/views/homeStyle';
 
 import avatar from '../assets/img/faces/marc.jpg';
@@ -41,41 +45,172 @@ import la_flag from '../assets/img/flags/LY.PNG';
 class Home extends Component {
   state = {
     checked: [],
-    anchorEl: null,
-    simpleSelect: ''
+    alert: null,
+    show: false,
+    resendEmail: '',
+    simpleSelect: '',
+    showResendAlert: false,
+    showResentAlert: false,
+    alertUserMessage: false
   };
-  handlePopoverOpen = event => {
-    this.setState({ anchorEl: event.target });
+  // handlePopoverOpen = event => {
+  //   this.setState({ anchorEl: event.target });
+  // };
+  // handlePopoverClose = () => {
+  //   this.setState({ anchorEl: null });
+  // };
+
+  componentDidMount() {
+    if (this.props.authenticated) {
+      this.props.fetchCurrentUser();
+    }
+  }
+
+  onShowResendAlert = () => {
+    this.setState({
+      showResendAlert: true
+    });
   };
-  handlePopoverClose = () => {
-    this.setState({ anchorEl: null });
+
+  onHideResendAlert = () => {
+    this.setState({
+      showResendAlert: false,
+      showResentAlert: false
+    });
   };
+
+  onResendEmail = async resendEmail => {
+    this.setState({ resendEmail });
+    await this.props.resendActivationEmail(resendEmail);
+    // setTimeout(this.onConfirmResendEmail, 200);
+    this.onConfirmResendEmail();
+  };
+
+  onConfirmResendEmail = () => {
+    this.setState({
+      showResendAlert: false,
+      showResentAlert: true
+    });
+  };
+
   handleSimple = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   handleToggle = value => {
     const { checked } = this.state;
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     this.setState({
       checked: newChecked
     });
   };
+
   render() {
-    const { lng, classes } = this.props;
+    const {
+      lng,
+      classes,
+      currentUser,
+      authenticated,
+      resendEmailError,
+      resendEmailIsSending
+    } = this.props;
     // const { anchorEl } = this.state;
     // const open = !!anchorEl;
+    const validationMsg = (
+      <span className={lng === 'ar' ? classes.marginRight : ''}>
+        {I18n.t('email.valid', { lng })}
+      </span>
+    );
     return (
       <div className={`${classes.container} animated fadeIn`}>
         <GridContainer justify="center">
           <ItemGrid xs={12} sm={12} md={12}>
+            {authenticated &&
+              currentUser.status === 'inactive' && (
+                <center className="animated fadeIn">
+                  <br /> <br /> <br />
+                  <SnackbarContent
+                    centerContent
+                    color="warning"
+                    message={
+                      <span>
+                        {I18n.t(
+                          'yourAccountHasnotBeenActivatedYetYouWillNeedToConfirmYourEmail.label',
+                          { lng }
+                        )}{' '}
+                        <br /> {I18n.t('click.label', { lng })}{' '}
+                        <a href="#resend" onClick={this.onShowResendAlert}>
+                          {I18n.t('here.label', { lng })}
+                        </a>{' '}
+                        {I18n.t('ifYouDidnotGetTheConfirmationEmail.label', {
+                          lng
+                        })}
+                      </span>
+                    }
+                  />
+                </center>
+              )}
+            {/* {this.state.alert} */}
+            {this.state.showResendAlert && (
+              <SweetAlert
+                input
+                showCancel
+                inputType="email"
+                disabled={resendEmailIsSending}
+                closeOnClickOutside={false}
+                style={{
+                  display: 'block',
+                  marginTop: '-100px',
+                  fontSize: '10px'
+                }}
+                title={I18n.t('enterYourEmail.label', { lng })}
+                onConfirm={e => this.onResendEmail(e)}
+                onCancel={this.onHideResendAlert}
+                confirmBtnCssClass={`${classes.button} ${classes.info}`}
+                cancelBtnCssClass={`${classes.button} ${classes.danger}`}
+                confirmBtnText={
+                  resendEmailIsSending
+                    ? I18n.t('resending.label', { lng })
+                    : I18n.t('resend.label', { lng })
+                }
+                cancelBtnText={I18n.t('cancel.label', { lng })}
+                placeholder={I18n.t('email.label', { lng })}
+                validationMsg={validationMsg}
+              />
+            )}
+            {this.state.showResentAlert && (
+              <SweetAlert
+                error={resendEmailError}
+                success={!resendEmailError}
+                style={{
+                  display: 'block',
+                  marginTop: '-100px',
+                  fontSize: '10px'
+                }}
+                onConfirm={this.onHideResendAlert}
+                onCancel={this.onHideResendAlert}
+                confirmBtnText={I18n.t('ok.label', { lng })}
+                confirmBtnCssClass={`${classes.button} ${classes.info}`}
+                title={
+                  resendEmailError ? (
+                    <small>
+                      {I18n.t(`${resendEmailError}.label`, { lng })}
+                    </small>
+                  ) : (
+                    <small>
+                      {I18n.t('WeHaveSentActivationLinkTo.label', { lng })}:{' '}
+                      <b>{this.state.resendEmail}</b>
+                    </small>
+                  )
+                }
+              />
+            )}
             <RegularCard
               cardTitle={I18n.t('findTrip.label', { lng })}
               cardSubtitle={I18n.t('whereWouldYouLikeToShip.label', { lng })}
@@ -97,9 +232,7 @@ class Home extends Component {
                         {I18n.t('chooseTripType.label', { lng })}
                       </InputLabel>
                       <Select
-                        MenuProps={{
-                          className: classes.selectMenu
-                        }}
+                        MenuProps={{ className: classes.selectMenu }}
                         classes={{
                           select: classes.select
                         }}
@@ -113,14 +246,20 @@ class Home extends Component {
                         <MenuItem
                           disabled
                           classes={{
-                            root: classes.selectMenuItem
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem
                           }}
                         >
                           {I18n.t('chooseTripType.label', { lng })}
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="2"
@@ -129,7 +268,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="3"
@@ -138,7 +280,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="4"
@@ -176,14 +321,20 @@ class Home extends Component {
                         <MenuItem
                           disabled
                           classes={{
-                            root: classes.selectMenuItem
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem
                           }}
                         >
                           {I18n.t('tripFrom.label', { lng })}
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="2"
@@ -192,7 +343,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="3"
@@ -201,7 +355,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="4"
@@ -239,14 +396,20 @@ class Home extends Component {
                         <MenuItem
                           disabled
                           classes={{
-                            root: classes.selectMenuItem
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem
                           }}
                         >
                           {I18n.t('to.label', { lng })}
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="2"
@@ -255,7 +418,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="3"
@@ -264,7 +430,10 @@ class Home extends Component {
                         </MenuItem>
                         <MenuItem
                           classes={{
-                            root: classes.selectMenuItem,
+                            root:
+                              lng === 'ar'
+                                ? classes.selectMenuItemRTL
+                                : classes.selectMenuItem,
                             selected: classes.selectMenuItemSelected
                           }}
                           value="4"
@@ -729,4 +898,28 @@ class Home extends Component {
   }
 }
 
-export default withStyles(homeStyle)(Home);
+const mapStateToProps = ({ authStore, userStore }) => {
+  const { authenticated } = authStore;
+  const {
+    currentUser,
+    currentUserError,
+    resendEmailError,
+    resendEmailStatus,
+    resendEmailIsSending,
+    currentUserIsFetching
+  } = userStore;
+  return {
+    currentUser,
+    authenticated,
+    currentUserError,
+    resendEmailError,
+    resendEmailStatus,
+    resendEmailIsSending,
+    currentUserIsFetching
+  };
+};
+
+export default connect(mapStateToProps, {
+  fetchCurrentUser,
+  resendActivationEmail
+})(withStyles(homeStyle)(Home));

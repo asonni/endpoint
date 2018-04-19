@@ -13,37 +13,31 @@ import InputLabel from 'material-ui/Input/InputLabel';
 import Clear from 'material-ui-icons/Clear';
 import Check from 'material-ui-icons/Check';
 
+import I18n from '../I18n/I18n';
 import customInputStyle from '../../assets/jss/components/customInputStyle';
 
-const CustomInput = ({ ...props }) => {
+const CustomInput = props => {
   const {
-    classes,
-    formControlProps,
-    labelText,
     id,
+    lng,
+    classes,
+    labelText,
+    rtlActive,
     labelProps,
     inputProps,
-    error,
-    success,
-    helpText,
-    rtlActive
+    formControlProps,
+    meta: { touched, error }
   } = props;
-
-  var labelClasses = cx({
+  const success = touched && error ? false : null;
+  let labelClasses = cx({
     [' ' + classes.labelRootError]: error,
     [' ' + classes.labelRootSuccess]: success && !error
   });
-
-  // const inkbarClasses = cx({
-  //   [classes.inkbarError]: error,
-  //   [classes.inkbarSuccess]: success && !error,
-  //   [classes.inkbar]: !success && !error
-  // });
-  var formControlClasses = classes.formControl;
+  let formControlClasses = classes.formControl;
   if (formControlProps !== undefined) {
     formControlClasses += ' ' + formControlProps.className;
   }
-  var underlineClasses = classes.underline;
+  let underlineClasses = classes.underline;
   if (inputProps !== undefined) {
     formControlClasses =
       formControlClasses +
@@ -72,6 +66,7 @@ const CustomInput = ({ ...props }) => {
     classes.labelRootSuccess +
     ' ' +
     cx({
+      [classes.feedbackRTL]: rtlActive,
       [classes.feedbackNoLabel]: labelText === undefined,
       [classes.feedbackAdorment]:
         inputProps !== undefined && inputProps.endAdornment !== undefined
@@ -82,6 +77,7 @@ const CustomInput = ({ ...props }) => {
     classes.labelRootError +
     ' ' +
     cx({
+      [classes.feedbackRTL]: rtlActive,
       [classes.feedbackNoLabel]: labelText === undefined,
       [classes.feedbackAdorment]:
         inputProps !== undefined && inputProps.endAdornment !== undefined
@@ -93,8 +89,10 @@ const CustomInput = ({ ...props }) => {
       [classes.inputRTL]: rtlActive,
       [classes.inputNoLabel]: labelText === undefined
     });
+  const FormHelperTextRTL = cx({ [classes.inputRTL]: rtlActive });
   return (
     <FormControl
+      error={error && touched}
       {...formControlProps}
       className={formControlClasses}
       aria-describedby={id + '-text'}
@@ -113,34 +111,35 @@ const CustomInput = ({ ...props }) => {
           input: input,
           disabled: classes.disabled,
           underline: underlineClasses
-          // inkbar: inkbarClasses
         }}
         id={id}
         {...inputProps}
+        {...props.input}
       />
-      {error ? (
+      {error && touched ? (
         <Clear className={errorClasses} />
       ) : success ? (
         <Check className={successClasses} />
       ) : null}
-      {helpText !== undefined ? (
-        <FormHelperText id={id + '-text'}>{helpText}</FormHelperText>
+      {touched && error ? (
+        <FormHelperText id={id + '-text'} className={FormHelperTextRTL}>
+          {I18n.t(error, { lng })}
+        </FormHelperText>
       ) : null}
     </FormControl>
   );
 };
 
 CustomInput.propTypes = {
-  classes: PropTypes.object.isRequired,
-  labelText: PropTypes.node,
-  labelProps: PropTypes.object,
   id: PropTypes.string,
+  error: PropTypes.string,
+  rtlActive: PropTypes.bool,
+  labelText: PropTypes.node,
+  helpText: PropTypes.string,
+  labelProps: PropTypes.object,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
-  error: PropTypes.bool,
-  success: PropTypes.bool,
-  helpText: PropTypes.string,
-  rtlActive: PropTypes.bool
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(customInputStyle)(CustomInput);

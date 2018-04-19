@@ -68,6 +68,10 @@ const customInputStyle = {
     textAlign: 'center',
     pointerEvents: 'none'
   },
+  feedbackRTL: {
+    left: '0',
+    right: 'auto'
+  },
   feedbackNoLabel: {
     // top: "8px"
   },

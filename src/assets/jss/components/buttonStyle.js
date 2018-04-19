@@ -184,9 +184,9 @@ const buttonStyle = {
     opacity: '0.65',
     pointerEvents: 'none'
   },
-  right: {
-    float: 'right'
-  },
+  // right: {
+  //   float: 'right'
+  // },
   justIcon: {
     minWidth: '10px',
     paddingLeft: '12px',

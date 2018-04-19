@@ -33,7 +33,7 @@ const footer = ({ ...props }) => {
             <ListItem className={classes.inlineBlock}>
               <a
                 className={block}
-                href="javascript:void(0)"
+                href={`#${lng}`}
                 onClick={props.onLanguageChanged}
               >
                 {I18n.t('language.label', { lng })}

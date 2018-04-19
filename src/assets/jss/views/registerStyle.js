@@ -6,7 +6,7 @@ import { container } from '../main';
 
 import customCheckboxRadioSwitch from '../customCheckboxRadioSwitch';
 
-const registerPageStyle = {
+const registerPageStyle = theme => ({
   container: {
     ...container,
     position: 'relative',
@@ -36,18 +36,18 @@ const registerPageStyle = {
     fontSize: '18px'
   },
   inputAdornment: {
-    marginRight: '18px',
-    top: '18px',
-    position: 'relative'
+    marginRight: '8px'
   },
   inputAdornmentRTL: {
-    marginLeft: '18px',
-    marginRight: '0px',
-    top: '18px',
-    position: 'relative'
+    marginLeft: '0px',
+    marginRight: '0px'
   },
   inputAdornmentIcon: {
     color: '#555'
+  },
+  inputAdornmentIconRTL: {
+    color: '#555',
+    marginLeft: '10px'
   },
   customFormControlClasses: {
     margin: '0 12px'
@@ -66,7 +66,19 @@ const registerPageStyle = {
   ...customCheckboxRadioSwitch,
   cardTitle: {
     fontSize: '2.6em'
+  },
+  buttonWrapper: {
+    margin: theme.spacing.unit,
+    position: 'relative'
+  },
+  buttonProgress: {
+    color: '#F9FBE7',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12
   }
-};
+});
 
 export default registerPageStyle;

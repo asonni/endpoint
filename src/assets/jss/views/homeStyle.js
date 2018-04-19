@@ -6,8 +6,9 @@ import { container } from '../main';
 
 import customCheckboxRadioSwitch from '../customCheckboxRadioSwitch';
 import customSelectStyle from '../customSelectStyle';
+import buttonStyle from '../components/buttonStyle';
 
-const homeStyle = {
+const homeStyle = theme => ({
   container: {
     ...container,
     position: 'relative',
@@ -36,14 +37,14 @@ const homeStyle = {
   socialTitle: {
     fontSize: '18px'
   },
-  inputAdornment: {
-    marginRight: '18px',
-    top: '18px',
-    position: 'relative'
-  },
-  inputAdornmentIcon: {
-    color: '#555'
-  },
+  // inputAdornment: {
+  //   marginRight: '18px',
+  //   top: '18px',
+  //   position: 'relative'
+  // },
+  // inputAdornmentIcon: {
+  //   color: '#555'
+  // },
   customFormControlClasses: {
     margin: '0 12px'
   },
@@ -79,7 +80,40 @@ const homeStyle = {
   actionButton: {
     margin: '0 0 0 5px',
     padding: '5px'
-  }
-};
+  },
+  inputAdornment: {
+    marginRight: '8px'
+  },
+  inputAdornmentRTL: {
+    marginLeft: '0px',
+    marginRight: '0px'
+  },
+  inputAdornmentIcon: {
+    color: '#555'
+  },
+  inputAdornmentIconRTL: {
+    color: '#555',
+    marginLeft: '10px'
+  },
+  marginRight: {
+    marginRight: '10px'
+  },
+  marginLeft: {
+    marginLeft: '10px'
+  },
+  buttonWrapper: {
+    margin: theme.spacing.unit,
+    position: 'relative'
+  },
+  buttonProgress: {
+    color: '#F9FBE7',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12
+  },
+  ...buttonStyle
+});
 
 export default homeStyle;

@@ -2,10 +2,12 @@
 import Add from 'material-ui-icons/Add';
 import HomeIcon from 'material-ui-icons/Home';
 import PersonAdd from 'material-ui-icons/PersonAdd';
+import Person from 'material-ui-icons/Person';
 import Fingerprint from 'material-ui-icons/Fingerprint';
 
 import Home from '../views/Home';
 import Login from '../views/Login';
+import Logout from '../views/Logout';
 import Register from '../views/Register';
 import Pricing from '../views/Pricing';
 
@@ -27,7 +29,7 @@ const pagesRoutes = [
     component: Login
   },
   {
-    path: '/Register',
+    path: '/register',
     name: 'Register Page',
     short: 'register',
     mini: 'LP',
@@ -41,13 +43,34 @@ const pagesRoutes = [
     mini: 'PP',
     icon: Add,
     component: Pricing
-  },
-  {
-    redirect: true,
-    path: '/',
-    pathTo: '/',
-    name: 'Home Page'
   }
 ];
 
-export default pagesRoutes;
+const authPagesRoutes = [
+  {
+    path: '/',
+    name: 'Home Page',
+    short: 'home',
+    mini: 'RP',
+    icon: HomeIcon,
+    component: Home
+  },
+  {
+    path: '/account',
+    name: 'Account Page',
+    short: 'myAccount',
+    mini: 'LP',
+    icon: Person,
+    component: Logout
+  },
+  {
+    path: '/pricing',
+    name: 'Pricing Page',
+    short: 'addTrip',
+    mini: 'PP',
+    icon: Add,
+    component: Pricing
+  }
+];
+
+export { pagesRoutes, authPagesRoutes };
