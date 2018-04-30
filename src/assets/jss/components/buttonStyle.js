@@ -416,6 +416,10 @@ const buttonStyle = {
       backgroundColor: 'transparent',
       boxShadow: 'none'
     }
+  },
+  buttonLink: {
+    marginTop: '-5px',
+    marginBottom: '-5px'
   }
 };
 

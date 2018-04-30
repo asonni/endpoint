@@ -17,15 +17,17 @@ const customInputStyle = {
   },
   underline: {
     '&:before': {
-      backgroundColor: '#D2D2D2',
+      backgroundColor: '#D2D2D2 !important',
       height: '1px !important'
-    },
+    }
+  },
+  inkbar: {
     '&:after': {
       backgroundColor: primaryColor,
       transition: '0.3s ease all'
     }
   },
-  underlineError: {
+  inkbarError: {
     '&:after': {
       backgroundColor: dangerColor,
       transition: '0.3s ease all'
@@ -35,7 +37,7 @@ const customInputStyle = {
       height: '2px !important'
     }
   },
-  underlineSuccess: {
+  inkbarSuccess: {
     '&:after': {
       backgroundColor: successColor,
       transition: '0.3s ease all'
@@ -65,6 +67,10 @@ const customInputStyle = {
     height: '24px',
     textAlign: 'center',
     pointerEvents: 'none'
+  },
+  feedbackRTL: {
+    left: '0',
+    right: 'auto'
   },
   feedbackNoLabel: {
     // top: "8px"

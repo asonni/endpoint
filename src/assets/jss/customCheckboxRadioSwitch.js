@@ -132,6 +132,10 @@ const customCheckboxRadioSwitch = {
     fontSize: '40px',
     lineHeight: '111px'
   },
+  iconCheckboxIconBoth: {
+    fontSize: '30px',
+    lineHeight: '111px'
+  },
   switchBarChecked: {
     backgroundColor: 'rgba(80, 80, 80, 0.7)',
     opacity: '1',

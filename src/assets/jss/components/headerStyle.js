@@ -205,12 +205,12 @@ const headerStyle = theme => ({
       top: '0'
     },
     '&:after': {
-      background: '#000',
+      background: '#eeeeee',
       opacity: '.8'
     }
   },
   sidebarButton: {
-    color: '#FFFFFF',
+    color: 'rgba(0, 0, 0, 0.54)',
     top: '8px'
   }
 });

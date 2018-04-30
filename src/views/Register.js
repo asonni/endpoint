@@ -228,7 +228,15 @@ class Register extends Component {
                                       ? classes.inputAdornmentRTL
                                       : classes.inputAdornment
                                   }
-                                />
+                                >
+                                  <Face
+                                    className={
+                                      lng === 'ar'
+                                        ? classes.inputAdornmentIconRTL
+                                        : classes.inputAdornmentIcon
+                                    }
+                                  />
+                                </InputAdornment>
                               ),
                               type: 'text',
                               placeholder: I18n.t('lastName.label', { lng })
@@ -350,7 +358,7 @@ class Register extends Component {
           </ItemGrid>
         </GridContainer>
         <Snackbar
-          autoHideDuration={1500}
+          autoHideDuration={2000}
           rtlActive={lng === 'ar'}
           onClose={this.handleAlertClose}
           place={lng === 'ar' ? 'br' : 'bl'}

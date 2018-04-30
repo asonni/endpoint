@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import SweetAlert from 'react-bootstrap-sweetalert';
 
 // material-ui components
@@ -47,11 +48,13 @@ class Home extends Component {
     checked: [],
     alert: null,
     show: false,
+    codeError: '',
     resendEmail: '',
     simpleSelect: '',
     showResendAlert: false,
     showResentAlert: false,
-    alertUserMessage: false
+    alertUserMessage: false,
+    showAlertCodeError: false
   };
   // handlePopoverOpen = event => {
   //   this.setState({ anchorEl: event.target });
@@ -61,10 +64,22 @@ class Home extends Component {
   // };
 
   componentDidMount() {
+    const { location: { search } } = this.props;
+    const params = new URLSearchParams(search);
+    if (params.get('code')) {
+      this.setState({
+        showAlertCodeError: true,
+        codeError: params.get('code')
+      });
+    }
     if (this.props.authenticated) {
       this.props.fetchCurrentUser();
     }
   }
+
+  onHideAlertCodeError = () => {
+    this.setState({ showAlertCodeError: false, codeError: '' });
+  };
 
   onShowResendAlert = () => {
     this.setState({
@@ -117,8 +132,8 @@ class Home extends Component {
       classes,
       currentUser,
       authenticated,
-      resendEmailError,
-      resendEmailIsSending
+      resendingEmail,
+      resendEmailError
     } = this.props;
     // const { anchorEl } = this.state;
     // const open = !!anchorEl;
@@ -131,6 +146,20 @@ class Home extends Component {
       <div className={`${classes.container} animated fadeIn`}>
         <GridContainer justify="center">
           <ItemGrid xs={12} sm={12} md={12}>
+            {this.state.showAlertCodeError && (
+              <center className="animated fadeIn">
+                <br /> <br /> <br />
+                <SnackbarContent
+                  centerContent
+                  color="info"
+                  message={
+                    <span>
+                      {I18n.t(`${this.state.codeError}.label`, { lng })}
+                    </span>
+                  }
+                />
+              </center>
+            )}
             {authenticated &&
               currentUser.status === 'inactive' && (
                 <center className="animated fadeIn">
@@ -156,13 +185,12 @@ class Home extends Component {
                   />
                 </center>
               )}
-            {/* {this.state.alert} */}
             {this.state.showResendAlert && (
               <SweetAlert
                 input
                 showCancel
                 inputType="email"
-                disabled={resendEmailIsSending}
+                disabled={resendingEmail}
                 closeOnClickOutside={false}
                 style={{
                   display: 'block',
@@ -175,7 +203,7 @@ class Home extends Component {
                 confirmBtnCssClass={`${classes.button} ${classes.info}`}
                 cancelBtnCssClass={`${classes.button} ${classes.danger}`}
                 confirmBtnText={
-                  resendEmailIsSending
+                  resendingEmail
                     ? I18n.t('resending.label', { lng })
                     : I18n.t('resend.label', { lng })
                 }
@@ -902,19 +930,19 @@ const mapStateToProps = ({ authStore, userStore }) => {
   const { authenticated } = authStore;
   const {
     currentUser,
+    resendingEmail,
     currentUserError,
     resendEmailError,
     resendEmailStatus,
-    resendEmailIsSending,
     currentUserIsFetching
   } = userStore;
   return {
     currentUser,
     authenticated,
+    resendingEmail,
     currentUserError,
     resendEmailError,
     resendEmailStatus,
-    resendEmailIsSending,
     currentUserIsFetching
   };
 };
@@ -922,4 +950,4 @@ const mapStateToProps = ({ authStore, userStore }) => {
 export default connect(mapStateToProps, {
   fetchCurrentUser,
   resendActivationEmail
-})(withStyles(homeStyle)(Home));
+})(withStyles(homeStyle)(withRouter(Home)));

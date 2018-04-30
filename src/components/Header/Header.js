@@ -19,7 +19,7 @@ import ListItemText from 'material-ui/List/ListItemText';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
 // material-ui-icons
-// import Menu from 'material-ui-icons/Menu';
+import MenuIcon from 'material-ui-icons/Menu';
 import Add from 'material-ui-icons/Add';
 import HomeIcon from 'material-ui-icons/Home';
 import Person from 'material-ui-icons/Person';
@@ -113,9 +113,9 @@ class Header extends Component {
           className={lng === 'ar' ? classes.listItemRTL : classes.listItem}
         >
           <NavLink
-            to="/pricing"
+            to="/addtrip"
             className={`${classes.navLink} ${cx({
-              [classes.navLinkActive]: this.activeRoute('/pricing')
+              [classes.navLinkActive]: this.activeRoute('/addtrip')
             })}`}
           >
             <ListItemIcon className={classes.listItemIcon}>
@@ -130,28 +130,49 @@ class Header extends Component {
         </ListItem>
       </Fragment>
     ) : (
-      pagesRoutes.map((prop, key) => (
+      <Fragment>
+        {pagesRoutes.map((prop, key) => (
+          <ListItem
+            key={key}
+            className={lng === 'ar' ? classes.listItemRTL : classes.listItem}
+          >
+            <NavLink
+              to={prop.path}
+              className={`${classes.navLink} ${cx({
+                [classes.navLinkActive]: this.activeRoute(prop.path)
+              })}`}
+            >
+              <ListItemIcon className={classes.listItemIcon}>
+                <prop.icon />
+              </ListItemIcon>
+              <ListItemText
+                primary={I18n.t(`${prop.short}.label`, { lng })}
+                disableTypography={true}
+                className={classes.listItemText}
+              />
+            </NavLink>
+          </ListItem>
+        ))}
         <ListItem
-          key={key}
           className={lng === 'ar' ? classes.listItemRTL : classes.listItem}
         >
           <NavLink
-            to={prop.path}
+            to="/addtrip"
             className={`${classes.navLink} ${cx({
-              [classes.navLinkActive]: this.activeRoute(prop.path)
+              [classes.navLinkActive]: this.activeRoute('addtrip')
             })}`}
           >
             <ListItemIcon className={classes.listItemIcon}>
-              <prop.icon />
+              <Add />
             </ListItemIcon>
             <ListItemText
-              primary={I18n.t(`${prop.short}.label`, { lng })}
+              primary={I18n.t(`addTrip.label`, { lng })}
               disableTypography={true}
               className={classes.listItemText}
             />
           </NavLink>
         </ListItem>
-      ))
+      </Fragment>
     );
 
   render() {
@@ -179,12 +200,12 @@ class Header extends Component {
           </Hidden>
           <Hidden mdUp>
             <IconButton
-              className={classes.sidebarButton}
               color="inherit"
               aria-label="open drawer"
+              className={classes.sidebarButton}
               onClick={this.handleDrawerToggle}
             >
-              <Menu />
+              <MenuIcon />
             </IconButton>
           </Hidden>
           <Hidden mdUp implementation="css">

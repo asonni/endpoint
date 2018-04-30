@@ -9,14 +9,14 @@ import Home from '../views/Home';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import Register from '../views/Register';
-import Pricing from '../views/Pricing';
+import AddTrip from '../views/AddTrip';
 
 const pagesRoutes = [
   {
     path: '/',
     name: 'Home Page',
     short: 'home',
-    mini: 'RP',
+    mini: 'HP',
     icon: HomeIcon,
     component: Home
   },
@@ -32,17 +32,9 @@ const pagesRoutes = [
     path: '/register',
     name: 'Register Page',
     short: 'register',
-    mini: 'LP',
+    mini: 'RP',
     icon: PersonAdd,
     component: Register
-  },
-  {
-    path: '/pricing',
-    name: 'Pricing Page',
-    short: 'addTrip',
-    mini: 'PP',
-    icon: Add,
-    component: Pricing
   }
 ];
 
@@ -64,12 +56,12 @@ const authPagesRoutes = [
     component: Logout
   },
   {
-    path: '/pricing',
-    name: 'Pricing Page',
+    path: '/addtrip',
+    name: 'Add Trip Page',
     short: 'addTrip',
-    mini: 'PP',
+    mini: 'TP',
     icon: Add,
-    component: Pricing
+    component: AddTrip
   }
 ];
 

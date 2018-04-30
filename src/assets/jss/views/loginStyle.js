@@ -2,6 +2,7 @@
 // // // LoginPage view styles
 // #############################
 import { container } from '../main';
+import buttonStyle from '../components/buttonStyle';
 
 const loginStyle = theme => ({
   content: {
@@ -63,7 +64,12 @@ const loginStyle = theme => ({
   close: {
     width: theme.spacing.unit * 4,
     height: theme.spacing.unit * 4
-  }
+  },
+  buttonLink: {
+    marginTop: '-5px',
+    marginBottom: '-5px'
+  },
+  ...buttonStyle
 });
 
 export default loginStyle;

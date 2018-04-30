@@ -11,7 +11,7 @@ const registerPageStyle = theme => ({
     ...container,
     position: 'relative',
     zIndex: '3',
-    paddingTop: '15vh'
+    paddingTop: '14vh'
   },
   cardClasses: {
     boxShadow:

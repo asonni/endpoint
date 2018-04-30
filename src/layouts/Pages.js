@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import ReduxPromise from 'redux-promise';
 import ReduxLogger from 'redux-logger';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 // creates a beautiful scrollbar
 // import PerfectScrollbar from "perfect-scrollbar";
@@ -16,18 +16,21 @@ import Home from '../views/Home';
 import Login from '../views/Login';
 import Logout from '../views/Logout';
 import Register from '../views/Register';
-import Pricing from '../views/Pricing';
+import AddTrip from '../views/AddTrip';
+import ResetPassword from '../views/ResetPassword';
 
 // core components
 import I18n from '../components/I18n/I18n';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
-import { pagesRoutes, authPagesRoutes } from '../routes/pages';
+// import { pagesRoutes, authPagesRoutes } from '../routes/pages';
 
 import pagesStyle from '../assets/jss/layouts/pagesStyle';
 import rootReducer from '../reducers';
 import { AUTH_USER } from '../actions/auth/types';
+import { TOKEN_TYPE } from '../actions/baseUrl';
+import setAuthToken from '../utils/setAuthToken';
 
 let middleware;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -44,8 +47,10 @@ let token = localStorage.getItem('ad_token');
 
 if (token) {
   store.dispatch({ type: AUTH_USER });
+  setAuthToken(`${TOKEN_TYPE} ${token}`);
 } else {
   token = false;
+  setAuthToken('');
 }
 
 class Pages extends Component {
@@ -105,43 +110,43 @@ class Pages extends Component {
     }
   };
 
-  renderList = () => {
-    if (token) {
-      return authPagesRoutes.map((prop, key) => {
-        if (prop.collapse) {
-          return null;
-        }
-        if (prop.redirect) {
-          return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-        }
-        return (
-          <Route
-            exact
-            key={key}
-            path={prop.path}
-            render={() => <prop.component lng={this.state.lng} />}
-          />
-        );
-      });
-    } else {
-      return pagesRoutes.map((prop, key) => {
-        if (prop.collapse) {
-          return null;
-        }
-        if (prop.redirect) {
-          return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
-        }
-        return (
-          <Route
-            exact
-            key={key}
-            path={prop.path}
-            render={() => <prop.component lng={this.state.lng} />}
-          />
-        );
-      });
-    }
-  };
+  // renderList = () => {
+  //   if (token) {
+  //     return authPagesRoutes.map((prop, key) => {
+  //       if (prop.collapse) {
+  //         return null;
+  //       }
+  //       if (prop.redirect) {
+  //         return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+  //       }
+  //       return (
+  //         <Route
+  //           exact
+  //           key={key}
+  //           path={prop.path}
+  //           render={() => <prop.component lng={this.state.lng} />}
+  //         />
+  //       );
+  //     });
+  //   } else {
+  //     return pagesRoutes.map((prop, key) => {
+  //       if (prop.collapse) {
+  //         return null;
+  //       }
+  //       if (prop.redirect) {
+  //         return <Redirect from={prop.path} to={prop.pathTo} key={key} />;
+  //       }
+  //       return (
+  //         <Route
+  //           exact
+  //           key={key}
+  //           path={prop.path}
+  //           render={() => <prop.component lng={this.state.lng} />}
+  //         />
+  //       );
+  //     });
+  //   }
+  // };
 
   render() {
     const { classes, ...rest } = this.props;
@@ -169,7 +174,16 @@ class Pages extends Component {
                     path="/register"
                     render={() => <Register lng={this.state.lng} />}
                   />
-                  <Route exact path="/pricing" component={Pricing} />
+                  <Route
+                    exact
+                    path="/reset"
+                    render={() => <ResetPassword lng={this.state.lng} />}
+                  />
+                  <Route
+                    exact
+                    path="/addtrip"
+                    render={() => <AddTrip lng={this.state.lng} />}
+                  />
                 </Switch>
                 <Footer
                   lng={this.state.lng}

@@ -35,6 +35,12 @@ const en = {
     click: { label: 'Click' },
     here: { label: 'here' },
     WeHaveSentActivationLinkTo: { label: "We've sent an activation link to" },
+    WeHaveSentPasswordResetLinkTo: {
+      label: "We've sent a password reset link to"
+    },
+    YouHaveSuccessfullyChangedYourPassword: {
+      label: "You've successfully changed your password"
+    },
     yourAccountHasnotBeenActivatedYetYouWillNeedToConfirmYourEmail: {
       label:
         'Your account hasn’t been activated yet, you’ll need to confirm your email.'
@@ -56,6 +62,20 @@ const en = {
       weak: 'Your password is very weak',
       long: 'Your password is very long'
     },
+    newPassword: {
+      label: 'New Password...',
+      require: 'Please enter your new password',
+      length: 'Your new password is too short',
+      weak: 'Your new password is very weak',
+      long: 'Your new password is very long'
+    },
+    confirmNewPassword: {
+      label: 'Confirm New Password...',
+      require: 'Please enter your confirm new password',
+      equal: 'Passwords do not match'
+    },
+    passwordReset: { label: 'Password Reset' },
+    reset: { label: 'Reset' },
     letsGo: { label: "Let's Go" },
     firstName: {
       label: 'First Name...',
@@ -70,6 +90,60 @@ const en = {
     getStarted: { label: 'Get Started' },
     iAgreeToThe: { label: 'I agree to the' },
     termsAndConditions: { label: 'terms and conditions' },
+    forgotPassword: { label: 'Forgot password?' },
+    recover: { label: 'Recover' },
+    recovering: { label: 'Recovering' },
+    // Add New Trip Page
+    air: { label: 'Air' },
+    land: { label: 'Land' },
+    packageDelivery: { label: 'Package Delivery' },
+    carPool: { label: 'Car Pool' },
+    both: { label: 'Both' },
+    next: { label: 'Next' },
+    previous: { label: 'Previous' },
+    finish: { label: 'Finish' },
+    travellingVia: {
+      label: 'Travelling via',
+      require: 'In order to continue please choose your travelling method!'
+    },
+    providedServices: {
+      label: 'Provided Services',
+      require: 'In order to continue please choose your provided services!'
+    },
+    backToProvidedServices: { label: 'Back To Provided Services' },
+    tripInformation: { label: 'Trip information' },
+    tripDetails: { label: 'Trip Details' },
+    startPoint: { label: 'Start Point' },
+    endPoint: { label: 'End Point' },
+    addNewTrip: { label: 'Add New Trip' },
+    thisInformationWillLetUsKnowMoreAboutYourNewTrip: {
+      label: 'This information will let us know more about your new trip'
+    },
+    passengerPrice: {
+      label: 'Passenger Price',
+      require: 'Please enter the passenger price',
+      number: 'Passenger price must be numbers only'
+    },
+    firstHalfPrice: {
+      label: 'Package First Half Price',
+      require: 'Please enter the first half price',
+      number: 'First half price must be numbers only'
+    },
+    additionalHalfPrice: {
+      label: 'Package Additional Half Price',
+      require: 'Please enter the additional half price',
+      number: 'Additional half price must be numbers only'
+    },
+    vehicleDescription: {
+      label: 'Vehicle Description',
+      require: 'Please enter the vehicle description',
+      length: 'Vehicle description must be at least 5 characters'
+    },
+    notes: {
+      label: 'Notes',
+      require: 'Please enter the notes',
+      length: 'Notes must be at least 5 characters'
+    },
     // Code errors from Backend
     missingEmail: { label: 'You must provide an email' },
     missingFullName: { label: 'You must provide your full name' },
@@ -90,6 +164,45 @@ const en = {
     missingInformation: { label: 'Information missing' },
     passwordNotUpdaated: {
       label: 'Password could not be updated. Incorrect information.'
+    },
+    missingStartPoint: {
+      label: 'You must provide a start point'
+    },
+    missingEndPoint: {
+      label: 'You must provide an end point'
+    },
+    missingServiceOrTravelBy: {
+      label: 'You must provide a travel by or a service'
+    },
+    startEqualsEnd: {
+      label: 'Starting point should not equal Ending point'
+    },
+    airAndPool: {
+      label: 'You can not provide Car pool service when traveling by air'
+    },
+    requestNotAvailable: {
+      label: 'Requesting a service is not available for this trip'
+    },
+    tripNotFound: {
+      label: 'Trip was not found'
+    },
+    serviceDoesNotMatch: {
+      label: 'The service requested does not match the service provided'
+    },
+    requestFromOwner: {
+      label: 'Owners are not allowed to request services for their trips'
+    },
+    updateNotAvailable: {
+      label: 'Updating a service is not available for this trip'
+    },
+    onlyOwnersUpdate: {
+      label: 'Only the owner of this trip is allowed to update'
+    },
+    invalidAction: {
+      label: 'Invalid action'
+    },
+    invalidId: {
+      label: 'Invalid ID'
     }
   }
 };
