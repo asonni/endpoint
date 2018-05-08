@@ -24,7 +24,21 @@ class AddTrip extends Component {
     firstHalfPrice: '',
     passengerPrice: '',
     vehicleDescription: '',
-    additionalHalfPrice: ''
+    additionalHalfPrice: '',
+    startPoint: {
+      placeId: '',
+      meetingPoint: '',
+      meetingTime: null,
+      phone: '',
+      time: null
+    },
+    endPoint: {
+      placeId: '',
+      meetingPoint: '',
+      meetingTime: null,
+      phone: '',
+      time: null
+    }
   };
 
   resetState = () => {
@@ -42,10 +56,38 @@ class AddTrip extends Component {
   };
 
   handleStateChange = (stateName, stateValue) => {
+    if (stateName === 'travelBy' && stateValue === 'air') {
+      this.setState({ service: 'packageDelivery' });
+    }
     this.setState({ [stateName]: stateValue });
   };
 
+  handelStartPointStateChange = (stateName, stateValue) => {
+    this.setState(prevState => ({
+      ...prevState,
+      startPoint: {
+        ...prevState.startPoint,
+        [stateName]: stateValue
+      }
+    }));
+  };
+
+  handelEndPointStateChange = (stateName, stateValue) => {
+    this.setState(prevState => ({
+      ...prevState,
+      endPoint: {
+        ...prevState.endPoint,
+        [stateName]: stateValue
+      }
+    }));
+  };
+
+  finishButtonClick = () => {
+    console.log(this.state);
+  };
+
   render() {
+    console.log(this.state);
     const { lng, classes } = this.props;
     return (
       <div className={`${classes.content} animated fadeIn`}>
@@ -82,19 +124,22 @@ class AddTrip extends Component {
                   'thisInformationWillLetUsKnowMoreAboutYourNewTrip.label',
                   { lng }
                 )}
-                nextButtonText="next.label"
-                finishButtonText="finish.label"
-                previousButtonText="previous.label"
                 notes={this.state.notes}
+                nextButtonText="next.label"
                 service={this.state.service}
                 resetState={this.resetState}
                 travelBy={this.state.travelBy}
+                finishButtonText="finish.label"
+                previousButtonText="previous.label"
+                finishButtonClick={this.finishButtonClick}
                 firstHalfPrice={this.state.firstHalfPrice}
                 passengerPrice={this.state.passengerPrice}
                 handleStateChange={this.handleStateChange}
                 vehicleDescription={this.state.vehicleDescription}
                 additionalHalfPrice={this.state.additionalHalfPrice}
                 backToProvidedServices={this.backToProvidedServices}
+                handelEndPointStateChange={this.handelEndPointStateChange}
+                handelStartPointStateChange={this.handelStartPointStateChange}
               />
             </ItemGrid>
           </GridContainer>

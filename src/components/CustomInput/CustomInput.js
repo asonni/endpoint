@@ -28,16 +28,25 @@ const CustomInput = props => {
     formControlProps,
     meta: { touched, error }
   } = props;
-  const success = touched && error ? false : null;
+
+  const success = touched && !error ? true : null;
+
   let labelClasses = cx({
     [' ' + classes.labelRootError]: error,
-    [' ' + classes.labelRootSuccess]: success && !error
+    [' ' + classes.labelRootSuccess]: success
   });
+
   let formControlClasses = classes.formControl;
   if (formControlProps !== undefined) {
     formControlClasses += ' ' + formControlProps.className;
   }
-  let underlineClasses = classes.underline;
+
+  var underlineClasses = cx({
+    [classes.underline]: true,
+    [classes.underlineError]: error && touched,
+    [classes.underlineSuccess]: success
+  });
+
   if (inputProps !== undefined) {
     formControlClasses =
       formControlClasses +
@@ -48,9 +57,6 @@ const CustomInput = props => {
             inputProps.endAdornment !== undefined) &&
           labelText === undefined
       });
-    underlineClasses = cx({
-      [classes.underline]: inputProps.disabled !== true
-    });
   }
   if (inputProps !== undefined) {
     labelClasses =

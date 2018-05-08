@@ -125,14 +125,14 @@ const en = {
       number: 'Passenger price must be numbers only'
     },
     firstHalfPrice: {
-      label: 'Package First Half Price',
-      require: 'Please enter the first half price',
-      number: 'First half price must be numbers only'
+      label: 'First half kg price',
+      require: 'Please enter the first half kg price',
+      number: 'Price must be numbers only'
     },
     additionalHalfPrice: {
-      label: 'Package Additional Half Price',
+      label: 'Additional half kg price',
       require: 'Please enter the additional half price',
-      number: 'Additional half price must be numbers only'
+      number: 'Price must be numbers only'
     },
     vehicleDescription: {
       label: 'Vehicle Description',
@@ -143,6 +143,29 @@ const en = {
       label: 'Notes',
       require: 'Please enter the notes',
       length: 'Notes must be at least 5 characters'
+    },
+    placeId: {
+      label: 'City',
+      require: 'Please select city from drop down menu'
+    },
+    meetingPoint: {
+      label: 'Meeting Point',
+      require: 'Please enter the meeting point'
+    },
+    meetingTime: {
+      label: 'Meeting Time',
+      require: 'Please enter the meeting time',
+      date: 'Meeting time must be a valid date'
+    },
+    time: {
+      label: 'Time',
+      require: 'Please enter the time',
+      date: 'Time must be a valid date'
+    },
+    phone: {
+      label: 'Phone',
+      require: 'Please enter your phone number',
+      phone: 'Phone number must be in international format'
     },
     // Code errors from Backend
     missingEmail: { label: 'You must provide an email' },

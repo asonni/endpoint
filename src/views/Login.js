@@ -88,10 +88,16 @@ class Login extends Component {
   };
 
   onLoginByEmailAndPassword = response => {
+    const { loginUser, history, location: { search } } = this.props;
     this.setState({ loading: true, alertAuthMessage: false });
-    this.props.loginUser(response, callback => {
+    loginUser(response, callback => {
       if (callback) {
-        this.props.history.push('/');
+        if (search) {
+          const params = new URLSearchParams(search);
+          history.push(params.get('next'));
+        } else {
+          history.push('/');
+        }
       } else {
         this.setState({ loading: false, alertAuthMessage: true });
       }
@@ -99,10 +105,16 @@ class Login extends Component {
   };
 
   onLoginByFacebook = response => {
+    const { loginUserByFacebook, history, location: { search } } = this.props;
     if (response.accessToken) {
-      this.props.loginUserByFacebook(response.accessToken, callback => {
+      loginUserByFacebook(response.accessToken, callback => {
         if (callback) {
-          this.props.history.push('/');
+          if (search) {
+            const params = new URLSearchParams(search);
+            history.push(params.get('next'));
+          } else {
+            history.push('/');
+          }
         } else {
           this.setState({ loading: false });
         }
@@ -113,11 +125,16 @@ class Login extends Component {
   };
 
   onLoginByGoogle = response => {
+    const { loginUserByGoogle, history, location: { search } } = this.props;
     if (response.tokenId) {
-      this.props.loginUserByGoogle(response.tokenId, callback => {
+      loginUserByGoogle(response.tokenId, callback => {
         if (callback) {
-          console.log(callback);
-          this.props.history.push('/');
+          if (search) {
+            const params = new URLSearchParams(search);
+            history.push(params.get('next'));
+          } else {
+            history.push('/');
+          }
         } else {
           this.setState({ loading: false });
         }

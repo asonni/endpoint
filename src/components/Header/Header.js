@@ -186,12 +186,19 @@ class Header extends Component {
       });
     return (
       <AppBar
-        position="static"
+        position="sticky"
+        color="default"
         className={`${classes.appBar} ${appBarClasses}`}
       >
         <Toolbar className={classes.container}>
           <div className={classes.flex}>
-            <Button className={classes.title}>Addabba</Button>
+            <Button className={classes.title}>
+              <img
+                alt="Addabba Logo"
+                style={{ width: '56%' }}
+                src={require('../../assets/img/addabba-logo.png')}
+              />
+            </Button>
           </div>
           <Hidden smDown implementation="css">
             <List className={lng === 'ar' ? classes.listRTL : classes.list}>
@@ -230,7 +237,7 @@ class Header extends Component {
   }
 }
 
-let mapStateToProps = ({ authStore: { authenticated } }) => ({
+const mapStateToProps = ({ authStore: { authenticated } }) => ({
   authenticated
 });
 

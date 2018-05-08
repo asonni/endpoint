@@ -33,7 +33,7 @@ const style = {
   },
   inputAdornmentIconRTL: {
     color: '#555',
-    marginLeft: '10px'
+    marginLeft: '-8px'
   },
   choiche: {
     textAlign: 'center',
@@ -49,12 +49,15 @@ class Step2 extends Component {
     open: false,
     notesState: '',
     passengerPrice: '',
+    passengerPriceError: '',
     passengerPriceState: '',
     firstHalfPrice: '',
+    firstHalfPriceError: '',
     firstHalfPriceState: '',
     vehicleDescription: '',
     vehicleDescriptionState: '',
     additionalHalfPrice: '',
+    additionalHalfPriceError: '',
     additionalHalfPriceState: ''
   };
 
@@ -70,40 +73,41 @@ class Step2 extends Component {
       notes: '',
       notesState: '',
       passengerPrice: '',
+      passengerPriceError: '',
       passengerPriceState: '',
       firstHalfPrice: '',
+      firstHalfPriceError: '',
       firstHalfPriceState: '',
       vehicleDescription: '',
       vehicleDescriptionState: '',
       additionalHalfPrice: '',
+      additionalHalfPriceError: '',
       additionalHalfPriceState: ' '
     });
   };
 
-  change = (event, stateName) => {
+  change = (event, stateName, type) => {
     const { value } = event.target;
-    if (!value && stateName === 'passengerPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else if (value && !Number(value) && stateName === 'passengerPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else {
-      this.setState({ [stateName + 'State']: 'success' });
-    }
 
-    if (!value && stateName === 'firstHalfPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else if (value && !Number(value) && stateName === 'firstHalfPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else {
-      this.setState({ [stateName + 'State']: 'success' });
-    }
-
-    if (!value && stateName === 'additionalHalfPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else if (value && !Number(value) && stateName === 'additionalHalfPrice') {
-      this.setState({ [stateName + 'State']: 'error' });
-    } else {
-      this.setState({ [stateName + 'State']: 'success' });
+    switch (type) {
+      case 'number':
+        if (Number(value)) {
+          this.setState({
+            [stateName + 'State']: 'success',
+            [stateName + 'Error']: ''
+          });
+        } else {
+          this.setState({
+            [stateName + 'State']: 'error',
+            [stateName + 'Error']: `${stateName}.number`
+          });
+        }
+        break;
+      case 'noValidate':
+        this.setState({ [stateName + 'State']: 'success' });
+        break;
+      default:
+        break;
     }
 
     this.setState({ [stateName]: event.target.value });
@@ -111,14 +115,35 @@ class Step2 extends Component {
   };
 
   isValidated = () => {
-    const { service } = this.props;
+    const { service, travelBy } = this.props;
     const {
       passengerPriceState,
       firstHalfPriceState,
       additionalHalfPriceState
     } = this.state;
 
-    if (service === '') {
+    if (
+      travelBy === 'air' &&
+      firstHalfPriceState === 'success' &&
+      additionalHalfPriceState === 'success'
+    ) {
+      return true;
+    } else {
+      if (firstHalfPriceState !== 'success') {
+        this.setState({
+          firstHalfPriceState: 'error',
+          firstHalfPriceError: 'firstHalfPrice.require'
+        });
+      }
+      if (additionalHalfPriceState !== 'success') {
+        this.setState({
+          additionalHalfPriceState: 'error',
+          additionalHalfPriceError: 'additionalHalfPrice.require'
+        });
+      }
+    }
+
+    if (service === '' && travelBy !== 'air') {
       this.setState({ open: true });
     } else {
       this.setState({ open: false });
@@ -130,10 +155,16 @@ class Step2 extends Component {
         return true;
       } else {
         if (firstHalfPriceState !== 'success') {
-          this.setState({ firstHalfPriceState: 'error' });
+          this.setState({
+            firstHalfPriceState: 'error',
+            firstHalfPriceError: 'firstHalfPrice.require'
+          });
         }
         if (additionalHalfPriceState !== 'success') {
-          this.setState({ additionalHalfPriceState: 'error' });
+          this.setState({
+            additionalHalfPriceState: 'error',
+            additionalHalfPriceError: 'additionalHalfPrice.require'
+          });
         }
       }
 
@@ -141,7 +172,10 @@ class Step2 extends Component {
         return true;
       } else {
         if (passengerPriceState !== 'success') {
-          this.setState({ passengerPriceState: 'error' });
+          this.setState({
+            passengerPriceState: 'error',
+            passengerPriceError: 'passengerPrice.require'
+          });
         }
       }
 
@@ -154,13 +188,22 @@ class Step2 extends Component {
         return true;
       } else {
         if (passengerPriceState !== 'success') {
-          this.setState({ passengerPriceState: 'error' });
+          this.setState({
+            passengerPriceState: 'error',
+            passengerPriceError: 'passengerPrice.require'
+          });
         }
         if (firstHalfPriceState !== 'success') {
-          this.setState({ firstHalfPriceState: 'error' });
+          this.setState({
+            firstHalfPriceState: 'error',
+            firstHalfPriceError: 'firstHalfPrice.require'
+          });
         }
         if (additionalHalfPriceState !== 'success') {
-          this.setState({ additionalHalfPriceState: 'error' });
+          this.setState({
+            additionalHalfPriceState: 'error',
+            additionalHalfPriceError: 'additionalHalfPrice.require'
+          });
         }
       }
     }
@@ -215,23 +258,22 @@ class Step2 extends Component {
                   {(service === 'carPool' || service === 'both') && (
                     <ItemGrid xs={12} sm={12} md={4}>
                       <CustomInput2
-                        labelText=""
+                        lng={lng}
+                        labelText={I18n.t('passengerPrice.label', { lng })}
                         id="passengerPrice"
+                        rtlActive={lng === 'ar'}
                         success={this.state.passengerPriceState === 'success'}
                         error={this.state.passengerPriceState === 'error'}
+                        helpText={this.state.passengerPriceError}
                         formControlProps={{ fullWidth: true }}
                         inputProps={{
                           value: this.state.passengerPrice,
                           onChange: event =>
-                            this.change(event, 'passengerPrice'),
-                          startAdornment: (
+                            this.change(event, 'passengerPrice', 'number'),
+                          endAdornment: (
                             <InputAdornment
-                              position="start"
-                              className={
-                                lng === 'ar'
-                                  ? classes.inputAdornmentRTL
-                                  : classes.inputAdornment
-                              }
+                              position="end"
+                              className={classes.inputAdornment}
                             >
                               <i
                                 className={
@@ -243,8 +285,7 @@ class Step2 extends Component {
                               />
                             </InputAdornment>
                           ),
-                          type: 'text',
-                          placeholder: I18n.t('passengerPrice.label', { lng })
+                          type: 'text'
                         }}
                       />
                     </ItemGrid>
@@ -253,23 +294,22 @@ class Step2 extends Component {
                     <Fragment>
                       <ItemGrid xs={12} sm={12} md={4}>
                         <CustomInput2
-                          labelText=""
+                          lng={lng}
+                          labelText={I18n.t('firstHalfPrice.label', { lng })}
                           id="firstHalfPrice"
+                          rtlActive={lng === 'ar'}
                           success={this.state.firstHalfPriceState === 'success'}
                           error={this.state.firstHalfPriceState === 'error'}
+                          helpText={this.state.firstHalfPriceError}
                           formControlProps={{ fullWidth: true }}
                           inputProps={{
                             value: this.state.firstHalfPrice,
                             onChange: event =>
-                              this.change(event, 'firstHalfPrice'),
-                            startAdornment: (
+                              this.change(event, 'firstHalfPrice', 'number'),
+                            endAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={
-                                  lng === 'ar'
-                                    ? classes.inputAdornmentRTL
-                                    : classes.inputAdornment
-                                }
+                                position="end"
+                                className={classes.inputAdornment}
                               >
                                 <i
                                   className={
@@ -281,21 +321,25 @@ class Step2 extends Component {
                                 />
                               </InputAdornment>
                             ),
-                            type: 'text',
-                            placeholder: I18n.t('firstHalfPrice.label', { lng })
+                            type: 'text'
                           }}
                         />
                       </ItemGrid>
                       <ItemGrid xs={12} sm={12} md={4}>
                         <CustomInput2
-                          labelText=""
+                          lng={lng}
+                          labelText={I18n.t('additionalHalfPrice.label', {
+                            lng
+                          })}
                           id="additionalHalfPrice"
+                          rtlActive={lng === 'ar'}
                           success={
                             this.state.additionalHalfPriceState === 'success'
                           }
                           error={
                             this.state.additionalHalfPriceState === 'error'
                           }
+                          helpText={this.state.additionalHalfPriceError}
                           formControlProps={{ fullWidth: true }}
                           inputProps={{
                             value: this.state.additionalHalfPrice,
@@ -303,17 +347,12 @@ class Step2 extends Component {
                               this.change(
                                 event,
                                 'additionalHalfPrice',
-                                'length',
-                                1
+                                'number'
                               ),
-                            startAdornment: (
+                            endAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={
-                                  lng === 'ar'
-                                    ? classes.inputAdornmentRTL
-                                    : classes.inputAdornment
-                                }
+                                position="end"
+                                className={classes.inputAdornment}
                               >
                                 <i
                                   className={
@@ -325,10 +364,7 @@ class Step2 extends Component {
                                 />
                               </InputAdornment>
                             ),
-                            type: 'text',
-                            placeholder: I18n.t('additionalHalfPrice.label', {
-                              lng
-                            })
+                            type: 'text'
                           }}
                         />
                       </ItemGrid>
@@ -341,25 +377,30 @@ class Step2 extends Component {
                       md={service === 'carPool' ? 8 : 12}
                     >
                       <CustomInput2
-                        labelText=""
+                        lng={lng}
+                        labelText={I18n.t('vehicleDescription.label', {
+                          lng
+                        })}
                         id="vehicleDescription"
+                        rtlActive={lng === 'ar'}
                         success={
                           this.state.vehicleDescriptionState === 'success'
                         }
                         error={this.state.vehicleDescriptionState === 'error'}
+                        helpText=""
                         formControlProps={{ fullWidth: true }}
                         inputProps={{
                           value: this.state.vehicleDescription,
                           onChange: event =>
-                            this.change(event, 'vehicleDescription'),
-                          startAdornment: (
+                            this.change(
+                              event,
+                              'vehicleDescription',
+                              'noValidate'
+                            ),
+                          endAdornment: (
                             <InputAdornment
-                              position="start"
-                              className={
-                                lng === 'ar'
-                                  ? classes.inputAdornmentRTL
-                                  : classes.inputAdornment
-                              }
+                              position="end"
+                              className={classes.inputAdornment}
                             >
                               <i
                                 className={
@@ -371,32 +412,28 @@ class Step2 extends Component {
                               />
                             </InputAdornment>
                           ),
-                          type: 'text',
-                          placeholder: I18n.t('vehicleDescription.label', {
-                            lng
-                          })
+                          type: 'text'
                         }}
                       />
                     </ItemGrid>
                   )}
                 </GridContainer>
                 <CustomInput2
+                  lng={lng}
                   id="notes"
-                  labelText=""
+                  labelText={I18n.t('notes.label', { lng })}
+                  rtlActive={lng === 'ar'}
                   success={this.state.notesState === 'success'}
                   error={this.state.notesState === 'error'}
+                  helpText=""
                   formControlProps={{ fullWidth: true }}
                   inputProps={{
-                    value: this.state.notesState,
+                    value: this.state.notes,
                     onChange: event => this.change(event, 'notes'),
-                    startAdornment: (
+                    endAdornment: (
                       <InputAdornment
-                        position="start"
-                        className={
-                          lng === 'ar'
-                            ? classes.inputAdornmentRTL
-                            : classes.inputAdornment
-                        }
+                        position="end"
+                        className={classes.inputAdornment}
                       >
                         <i
                           className={
@@ -408,8 +445,7 @@ class Step2 extends Component {
                         />
                       </InputAdornment>
                     ),
-                    type: 'text',
-                    placeholder: I18n.t('notes.label', { lng })
+                    type: 'text'
                   }}
                 />
               </Fragment>
@@ -531,21 +567,21 @@ class Step2 extends Component {
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 <CustomInput2
-                  labelText=""
+                  lng={lng}
+                  labelText={I18n.t('firstHalfPrice.label', { lng })}
                   id="firstHalfPrice"
+                  rtlActive={lng === 'ar'}
                   success={this.state.firstHalfPriceState === 'success'}
                   error={this.state.firstHalfPriceState === 'error'}
+                  helpText={this.state.firstHalfPriceError}
                   formControlProps={{ fullWidth: true }}
                   inputProps={{
-                    onChange: event => this.change(event, 'firstHalfPrice'),
-                    startAdornment: (
+                    onChange: event =>
+                      this.change(event, 'firstHalfPrice', 'number'),
+                    endAdornment: (
                       <InputAdornment
-                        position="start"
-                        className={
-                          lng === 'ar'
-                            ? classes.inputAdornmentRTL
-                            : classes.inputAdornment
-                        }
+                        position="end"
+                        className={classes.inputAdornment}
                       >
                         <i
                           className={
@@ -557,29 +593,29 @@ class Step2 extends Component {
                         />
                       </InputAdornment>
                     ),
-                    type: 'text',
-                    placeholder: I18n.t('firstHalfPrice.label', { lng })
+                    type: 'text'
                   }}
                 />
               </ItemGrid>
               <ItemGrid xs={12} sm={12} md={4}>
                 <CustomInput2
-                  labelText=""
+                  lng={lng}
+                  labelText={I18n.t('additionalHalfPrice.label', {
+                    lng
+                  })}
+                  rtlActive={lng === 'ar'}
                   id="additionalHalfPrice"
                   success={this.state.additionalHalfPriceState === 'success'}
                   error={this.state.additionalHalfPriceState === 'error'}
+                  helpText={this.state.additionalHalfPriceError}
                   formControlProps={{ fullWidth: true }}
                   inputProps={{
                     onChange: event =>
-                      this.change(event, 'additionalHalfPrice', 'length', 1),
-                    startAdornment: (
+                      this.change(event, 'additionalHalfPrice', 'number'),
+                    endAdornment: (
                       <InputAdornment
-                        position="start"
-                        className={
-                          lng === 'ar'
-                            ? classes.inputAdornmentRTL
-                            : classes.inputAdornment
-                        }
+                        position="end"
+                        className={classes.inputAdornment}
                       >
                         <i
                           className={
@@ -591,34 +627,30 @@ class Step2 extends Component {
                         />
                       </InputAdornment>
                     ),
-                    type: 'text',
-                    placeholder: I18n.t('additionalHalfPrice.label', {
-                      lng
-                    })
+                    type: 'text'
                   }}
                 />
               </ItemGrid>
             </GridContainer>
             <CustomInput2
+              lng={lng}
               id="notes"
-              labelText=""
+              labelText={I18n.t('notes.label', { lng })}
+              rtlActive={lng === 'ar'}
               success={this.state.notesState === 'success'}
               error={this.state.notesState === 'error'}
               formControlProps={{ fullWidth: true }}
               inputProps={{
+                value: this.state.notes,
                 onChange: event => this.change(event, 'notes'),
-                startAdornment: (
+                endAdornment: (
                   <InputAdornment
-                    position="start"
-                    className={
-                      lng === 'ar'
-                        ? classes.inputAdornmentRTL
-                        : classes.inputAdornment
-                    }
+                    position="end"
+                    className={classes.inputAdornment}
                   >
                     <i
                       className={
-                        'fas fa-info ' +
+                        'fas fa-weight ' +
                         (lng === 'ar'
                           ? classes.inputAdornmentIconRTL
                           : classes.inputAdornmentIcon)
@@ -626,8 +658,7 @@ class Step2 extends Component {
                     />
                   </InputAdornment>
                 ),
-                type: 'text',
-                placeholder: I18n.t('notes.label', { lng })
+                type: 'text'
               }}
             />
           </div>

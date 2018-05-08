@@ -49,6 +49,17 @@ const customInputStyle = {
     lineHeight: '1.42857',
     transition: '0.3s ease all'
   },
+  labelRootRTL: {
+    ...defaultFont,
+    color: '#AAAAAA',
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '1.42857',
+    transition: '0.3s ease all',
+    transformOrigin: 'top right',
+    right: 0,
+    left: 'auto'
+  },
   labelRootError: {
     color: dangerColor
   },
@@ -65,6 +76,10 @@ const customInputStyle = {
     height: '24px',
     textAlign: 'center',
     pointerEvents: 'none'
+  },
+  feedbackRTL: {
+    left: '0',
+    right: 'auto'
   },
   feedbackNoLabel: {
     // top: "8px"
@@ -98,6 +113,12 @@ const customInputStyle = {
   },
   feedbackAdorment: {
     right: '22px'
+  },
+  feedbackAdormentRTL: {
+    left: '22px'
+  },
+  helpText: {
+    color: '#f44336'
   }
 };
 

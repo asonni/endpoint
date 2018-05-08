@@ -47,6 +47,15 @@ class Wizard extends Component {
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
     this.refreshAnimation(this.state.currentStep);
+    if (this.props.travelBy !== nextProps.travelBy) {
+      this.setState({
+        currentStep: 1,
+        nextButton: true,
+        previousButton: true,
+        finishButton: false
+      });
+      this.refreshAnimation(1);
+    }
   }
   componentDidMount() {
     this.refreshAnimation(0);
@@ -95,7 +104,7 @@ class Wizard extends Component {
             undefined)) ||
       this.props.validate === undefined
     ) {
-      var key = this.state.currentStep + 1;
+      const key = this.state.currentStep + 1;
       this.setState({
         currentStep: key,
         nextButton: this.props.steps.length > key + 1 ? true : false,
@@ -230,6 +239,13 @@ class Wizard extends Component {
                     vehicleDescription={this.props.vehicleDescription}
                     additionalHalfPrice={this.props.additionalHalfPrice}
                     backToProvidedServices={this.props.backToProvidedServices}
+                    handelEndPointStateChange={
+                      this.props.handelEndPointStateChange
+                    }
+                    handelStartPointStateChange={
+                      this.props.handelStartPointStateChange
+                    }
+                    nextButtonClick={this.nextButtonClick}
                   />
                 </div>
               );

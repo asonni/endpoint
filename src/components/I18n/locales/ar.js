@@ -120,28 +120,48 @@ const ar = {
     },
     passengerPrice: {
       label: 'السعر لكل مسافر',
-      require: 'Please enter the passenger price',
-      number: 'Passenger price must be numbers only'
+      require: 'الرجاء إدراج سعر المسافر',
+      number: 'السعر المدرج يجب أن يحتوي على أرقم فقط'
     },
     firstHalfPrice: {
-      label: 'Package First Half Price',
-      require: 'Please enter the first half price',
-      number: 'First half price must be numbers only'
+      label: 'سعر النصف الكجم الأول',
+      require: 'يجب إدراج سعر نصف الكجم الأول ',
+      number: 'السعر المدرج يجب أن يحتوي على أرقم فقط'
     },
     additionalHalfPrice: {
-      label: 'Package Additional Half Price',
-      require: 'Please enter the additional half price',
-      number: 'Additional half price must be numbers only'
+      label: 'سعر النصف الكجم الإضافي',
+      require: 'يجب إدراج سعر نصف الكجم الإضافي',
+      number: 'السعر المدرج يجب أن يحتوي على أرقم فقط'
     },
     vehicleDescription: {
-      label: 'Vehicle Description',
+      label: 'مواصفات السيارة',
       require: 'Please enter the vehicle description',
       length: 'Vehicle description must be at least 5 characters'
     },
     notes: {
-      label: 'Notes',
+      label: 'ملاحظات',
       require: 'Please enter the notes',
       length: 'Notes must be at least 5 characters'
+    },
+    placeId: {
+      label: 'المدينة',
+      require: 'الرجاء اختيار المدينة من القائمة'
+    },
+    meetingPoint: {
+      label: 'نقطة الالتقاء',
+      require: 'الرجاء ادخال نقطة الالتقاء'
+    },
+    meetingTime: {
+      label: 'وقت الالتقاء',
+      require: 'الرجاء ادخال وقت الالتقاء'
+    },
+    time: {
+      label: 'الوقت'
+    },
+    phone: {
+      label: 'رقم الهاتف',
+      require: 'يرجى إدخال رقم الهاتف الخاص بك',
+      phone: 'يجب أن يكون رقم الهاتف بالتنسيق الدولي'
     },
     // Code errors from Backend
     missingEmail: { label: 'يجب عليك إدراج بريد إلكتروني' },

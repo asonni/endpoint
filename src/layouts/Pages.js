@@ -20,6 +20,7 @@ import AddTrip from '../views/AddTrip';
 import ResetPassword from '../views/ResetPassword';
 
 // core components
+import { requireAuthActive, requireGuest } from '../components/Hoc';
 import I18n from '../components/I18n/I18n';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -166,13 +167,13 @@ class Pages extends Component {
                   <Route
                     exact
                     path="/login"
-                    render={() => <Login lng={this.state.lng} />}
+                    component={requireGuest(Login, this.state.lng)}
                   />
                   <Route exact path="/account" component={Logout} />
                   <Route
                     exact
                     path="/register"
-                    render={() => <Register lng={this.state.lng} />}
+                    component={requireGuest(Register, this.state.lng)}
                   />
                   <Route
                     exact
@@ -182,7 +183,10 @@ class Pages extends Component {
                   <Route
                     exact
                     path="/addtrip"
-                    render={() => <AddTrip lng={this.state.lng} />}
+                    component={requireAuthActive(AddTrip, this.state.lng)}
+                    // render={() =>
+                    //   requireAuthActive(<AddTrip lng={this.state.lng} />)
+                    // }
                   />
                 </Switch>
                 <Footer

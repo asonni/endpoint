@@ -18,8 +18,6 @@ import {
 
 const headerStyle = theme => ({
   appBar: {
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
     borderBottom: '0',
     marginBottom: '0',
     position: 'absolute',
@@ -32,7 +30,8 @@ const headerStyle = theme => ({
     padding: '10px 0',
     transition: 'all 150ms ease 0s',
     minHeight: '50px',
-    display: 'block'
+    display: 'block',
+    backgroundColor: '#ffffff'
   },
   container: {
     ...container,
@@ -43,6 +42,7 @@ const headerStyle = theme => ({
   },
   title: {
     ...defaultFont,
+    padding: 0,
     lineHeight: '30px',
     fontSize: '18px',
     borderRadius: '3px',
