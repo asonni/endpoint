@@ -9,7 +9,8 @@ import {
   successColor,
   infoColor,
   roseColor,
-  grayColor
+  grayColor,
+  skyBlueColor
 } from '../main';
 
 const infoStyle = {
@@ -43,6 +44,9 @@ const infoStyle = {
   },
   gray: {
     color: grayColor
+  },
+  skyBlue: {
+    color: skyBlueColor
   },
   icon: {
     width: '36px',

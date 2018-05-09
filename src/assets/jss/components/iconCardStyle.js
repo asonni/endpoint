@@ -10,7 +10,8 @@ import {
   redCardHeader,
   blueCardHeader,
   purpleCardHeader,
-  roseCardHeader
+  roseCardHeader,
+  skyBlueCardHeader
 } from '../main';
 
 const iconCardStyle = {
@@ -33,6 +34,7 @@ const iconCardStyle = {
   blueCardHeader,
   purpleCardHeader,
   roseCardHeader,
+  skyBlueCardHeader,
   cardContent: {
     padding: '15px 20px',
     position: 'relative'

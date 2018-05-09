@@ -1,19 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 // material-ui components
-import withStyles from "material-ui/styles/withStyles";
-import Card from "material-ui/Card";
-import CardContent from "material-ui/Card/CardContent";
-import CardHeader from "material-ui/Card/CardHeader";
-import CardActions from "material-ui/Card/CardActions";
-import Typography from "material-ui/Typography";
+import withStyles from 'material-ui/styles/withStyles';
+import Card from 'material-ui/Card';
+import CardContent from 'material-ui/Card/CardContent';
+import CardHeader from 'material-ui/Card/CardHeader';
+import CardActions from 'material-ui/Card/CardActions';
+import Typography from 'material-ui/Typography';
 
 // core components
-import Button from "components/CustomButtons/Button";
+import Button from 'components/CustomButtons/Button';
 
-import imagePriceCardStyle from "assets/jss/material-dashboard-pro-react/components/imagePriceCardStyle.jsx";
+import imagePriceCardStyle from 'assets/jss/material-dashboard-pro-react/components/imagePriceCardStyle.jsx';
 
 class ImagePriceCard extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class ImagePriceCard extends React.Component {
     const cardHeaderClasses =
       classes.cardHeader +
       cx({
-        [" " + classes.moveImageUp]: this.state.hover && hover
+        [' ' + classes.moveImageUp]: this.state.hover && hover
       });
     var addHoverEvent = {};
     if (hover) {
@@ -83,10 +83,10 @@ class ImagePriceCard extends React.Component {
             <this.props.statIcon
               className={
                 classes.cardStatsIcon +
-                " " +
-                classes[statIconColor + "CardStatsIcon"]
+                ' ' +
+                classes[statIconColor + 'CardStatsIcon']
               }
-            />{" "}
+            />{' '}
             {statLink !== undefined ? (
               <a href={statLink.href} className={classes.cardStatsLink}>
                 {statLink.text}
@@ -102,7 +102,7 @@ class ImagePriceCard extends React.Component {
 }
 
 ImagePriceCard.defaultProps = {
-  hover: false,
+  hover: false
 };
 
 ImagePriceCard.propTypes = {
@@ -114,13 +114,14 @@ ImagePriceCard.propTypes = {
   location: PropTypes.string,
   statIcon: PropTypes.func.isRequired,
   statIconColor: PropTypes.oneOf([
-    "warning",
-    "primary",
-    "danger",
-    "success",
-    "info",
-    "rose",
-    "gray"
+    'warning',
+    'primary',
+    'danger',
+    'success',
+    'info',
+    'rose',
+    'gray',
+    'skyBlue'
   ]),
   statLink: PropTypes.object,
   statText: PropTypes.node,

@@ -220,7 +220,7 @@ class Login extends Component {
               )}
               <form onSubmit={handleSubmit(this.onLoginByEmailAndPassword)}>
                 <LoginCard
-                  headerColor="rose"
+                  headerColor="skyBlue"
                   cardTitle={I18n.t('login.label', { lng })}
                   cardSubtitle={I18n.t('orBeClassical.label', { lng })}
                   customCardClass={classes.cardClasses}
@@ -230,7 +230,7 @@ class Login extends Component {
                       <div className={classes.buttonWrapper}>
                         <Button
                           wd
-                          color="rose"
+                          color="skyBlue"
                           type="submit"
                           disabled={loading}
                         >

@@ -93,6 +93,7 @@ const successColor = '#4caf50';
 const infoColor = '#00acc1';
 const roseColor = '#e91e63';
 const grayColor = '#999999';
+const skyBlueColor = '#00b9ff';
 
 const primaryBoxShadow = {
   boxShadow:
@@ -142,6 +143,10 @@ const purpleCardHeader = {
 const roseCardHeader = {
   background: 'linear-gradient(60deg, #ec407a, #d81b60)',
   ...roseBoxShadow
+};
+const skyBlueCardHeader = {
+  background: 'linear-gradient(60deg, #00b9ff, #00b9ff)',
+  ...infoBoxShadow
 };
 
 const cardActions = {
@@ -211,6 +216,7 @@ export {
   infoColor,
   roseColor,
   grayColor,
+  skyBlueColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,
@@ -223,6 +229,7 @@ export {
   blueCardHeader,
   purpleCardHeader,
   roseCardHeader,
+  skyBlueCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,

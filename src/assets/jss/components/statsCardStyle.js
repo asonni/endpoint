@@ -12,6 +12,7 @@ import {
   blueCardHeader,
   purpleCardHeader,
   roseCardHeader,
+  skyBlueCardHeader,
   cardActions,
   grayColor,
   warningColor,
@@ -19,7 +20,8 @@ import {
   successColor,
   infoColor,
   primaryColor,
-  roseColor
+  roseColor,
+  skyBlueColor
 } from '../main';
 
 const statsCardStyle = {
@@ -40,6 +42,7 @@ const statsCardStyle = {
   blueCardHeader,
   purpleCardHeader,
   roseCardHeader,
+  skyBlueCardHeader,
   cardContent: {
     textAlign: 'right',
     paddingTop: '10px',
@@ -113,6 +116,9 @@ const statsCardStyle = {
   },
   grayCardStatsIcon: {
     color: grayColor
+  },
+  skyBlueCardStatsIcon: {
+    color: skyBlueColor
   },
   cardStatsLink: {
     color: primaryColor,

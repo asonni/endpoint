@@ -3,6 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 // material-ui components
+import { CircularProgress } from 'material-ui/Progress';
 import withStyles from 'material-ui/styles/withStyles';
 import Card from 'material-ui/Card';
 
@@ -265,7 +266,7 @@ class Wizard extends Component {
             <div className={lng === 'ar' ? classes.left : classes.right}>
               {this.state.nextButton ? (
                 <Button
-                  color="rose"
+                  color="skyBlue"
                   customClass={this.props.nextButtonClasses}
                   onClick={this.nextButtonClick}
                 >
@@ -273,13 +274,29 @@ class Wizard extends Component {
                 </Button>
               ) : null}
               {this.state.finishButton ? (
-                <Button
-                  color="rose"
-                  customClass={this.finishButtonClasses}
-                  onClick={this.finishButtonClick}
-                >
-                  {I18n.t(this.props.finishButtonText, { lng })}
-                </Button>
+                // <Button
+                //   color="skyBlue"
+                //   customClass={this.finishButtonClasses}
+                //   onClick={this.finishButtonClick}
+                // >
+                //   {I18n.t(this.props.finishButtonText, { lng })}
+                // </Button>
+                <div className={classes.buttonWrapper}>
+                  <Button
+                    color="skyBlue"
+                    customClass={this.finishButtonClasses}
+                    onClick={this.finishButtonClick}
+                    disabled={this.props.finishButtonLoading}
+                  >
+                    {I18n.t(this.props.finishButtonText, { lng })}
+                  </Button>
+                  {this.props.finishButtonLoading && (
+                    <CircularProgress
+                      size={24}
+                      className={classes.buttonProgress}
+                    />
+                  )}
+                </div>
               ) : null}
             </div>
             <div className={classes.clearfix} />
@@ -291,7 +308,7 @@ class Wizard extends Component {
 }
 
 Wizard.defaultProps = {
-  color: 'rose',
+  color: 'skyBlue',
   title: 'Here should go your title',
   subtitle: 'And this would be your subtitle',
   previousButtonText: 'Previous',
@@ -317,7 +334,8 @@ Wizard.propTypes = {
     'danger',
     'success',
     'info',
-    'rose'
+    'skyBlue',
+    'skyBlue'
   ]),
   title: PropTypes.string,
   subtitle: PropTypes.string,

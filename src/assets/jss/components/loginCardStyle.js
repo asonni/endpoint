@@ -11,7 +11,8 @@ import {
   redCardHeader,
   blueCardHeader,
   purpleCardHeader,
-  roseCardHeader
+  roseCardHeader,
+  skyBlueCardHeader
 } from '../main';
 
 const loginCardStyle = {
@@ -43,6 +44,7 @@ const loginCardStyle = {
   blueCardHeader,
   purpleCardHeader,
   roseCardHeader,
+  skyBlueCardHeader,
   cardTitle: {
     ...defaultFont,
     color: '#FFFFFF',

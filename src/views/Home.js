@@ -474,7 +474,7 @@ class Home extends Component {
                   <GridContainer justify="center">
                     <ItemGrid xs={12} sm={12} md={4}>
                       <div className={classes.customButtonClass}>
-                        <Button fullWidth color="rose">
+                        <Button fullWidth color="skyBlue">
                           <i className="material-icons">search</i>{' '}
                           {I18n.t('search.label', { lng })}
                         </Button>
@@ -490,7 +490,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={LocalShipping}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('inboundTrips.label', { lng })}
               description="20"
               rtlActive={lng === 'ar'}
@@ -500,7 +500,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={LocalAirport}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('outboundTrips.label', { lng })}
               description="10"
               rtlActive={lng === 'ar'}
@@ -510,7 +510,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={LocalTaxi}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('localTrips.label', { lng })}
               description="200"
               rtlActive={lng === 'ar'}
@@ -520,7 +520,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={LocalAirport}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('internationalTrips.label', { lng })}
               description="150"
               rtlActive={lng === 'ar'}
@@ -530,7 +530,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={LocalAirport}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('tripsByAir.label', { lng })}
               description="12"
               rtlActive={lng === 'ar'}
@@ -540,7 +540,7 @@ class Home extends Component {
           <ItemGrid xs={12} sm={6} md={6} lg={4}>
             <StatsCard
               icon={DirectionsCar}
-              iconColor="rose"
+              iconColor="skyBlue"
               title={I18n.t('tripsByLand.label', { lng })}
               description="9"
               rtlActive={lng === 'ar'}
@@ -551,7 +551,7 @@ class Home extends Component {
         <GridContainer>
           <ItemGrid xs={12}>
             <IconCard
-              iconColor="rose"
+              iconColor="skyBlue"
               icon={CardTravel}
               rtlActive={lng === 'ar'}
               title={I18n.t('latestTrips.label', { lng })}
@@ -645,7 +645,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>
@@ -713,7 +713,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>
@@ -765,7 +765,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>
@@ -817,7 +817,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>
@@ -864,7 +864,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>
@@ -906,7 +906,7 @@ class Home extends Component {
                           </div>,
                           <Tooltip title="Send Request" placement="top">
                             <Button
-                              color="rose"
+                              color="skyBlue"
                               customClass={classes.actionButton}
                             >
                               <i className="material-icons">send</i>

@@ -75,7 +75,8 @@ IconCard.propTypes = {
     'red',
     'blue',
     'purple',
-    'rose'
+    'rose',
+    'skyBlue'
   ]),
   title: PropTypes.node,
   category: PropTypes.node,

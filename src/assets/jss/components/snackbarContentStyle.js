@@ -66,6 +66,11 @@ const snackbarContentStyle = {
     color: '#ffffff',
     ...roseBoxShadow
   },
+  skyBlue: {
+    backgroundColor: '#00b9ff',
+    color: '#ffffff',
+    ...infoBoxShadow
+  },
   message: {
     padding: '0',
     display: 'block',
@@ -116,6 +121,9 @@ const snackbarContentStyle = {
   },
   roseIcon: {
     color: '#eb3573'
+  },
+  skyBlueIcon: {
+    color: '#00b9ff'
   },
   iconMessage: {
     paddingLeft: '50px',

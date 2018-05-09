@@ -63,7 +63,8 @@ FullHeaderCard.propTypes = {
     'red',
     'blue',
     'purple',
-    'rose'
+    'rose',
+    'skyBlue'
   ]),
   cardTitle: PropTypes.node,
   cardSubtitle: PropTypes.node,

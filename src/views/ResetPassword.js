@@ -100,7 +100,7 @@ class ResetPassword extends Component {
               )}
               <form onSubmit={handleSubmit(this.onResetPassword)}>
                 <LoginCard
-                  headerColor="rose"
+                  headerColor="skyBlue"
                   cardTitle={I18n.t('passwordReset.label', { lng })}
                   customCardClass={classes.cardClasses}
                   footerAlign="center"
@@ -108,7 +108,7 @@ class ResetPassword extends Component {
                     <div className={classes.buttonWrapper}>
                       <Button
                         wd
-                        color="rose"
+                        color="skyBlue"
                         type="submit"
                         disabled={submitting || pristine}
                       >

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // material-ui components
 import withStyles from 'material-ui/styles/withStyles';
@@ -10,6 +11,8 @@ import ItemGrid from '../components/Grid/ItemGrid';
 import I18n from '../components/I18n/I18n';
 
 import addTripStyle from '../assets/jss/views/addTripStyle';
+
+import { newTrip } from '../actions/trip';
 
 import Step1 from './AddTripSteps/Step1';
 import Step2 from './AddTripSteps/Step2';
@@ -57,7 +60,7 @@ class AddTrip extends Component {
 
   handleStateChange = (stateName, stateValue) => {
     if (stateName === 'travelBy' && stateValue === 'air') {
-      this.setState({ service: 'packageDelivery' });
+      this.setState({ service: 'package' });
     }
     this.setState({ [stateName]: stateValue });
   };
@@ -82,8 +85,11 @@ class AddTrip extends Component {
     }));
   };
 
-  finishButtonClick = () => {
+  finishButtonClick = async () => {
     console.log(this.state);
+    await this.props.newTrip(this.state);
+    console.log(this.props.errors);
+    this.props.history.push('/');
   };
 
   render() {
@@ -131,6 +137,7 @@ class AddTrip extends Component {
                 travelBy={this.state.travelBy}
                 finishButtonText="finish.label"
                 previousButtonText="previous.label"
+                finishButtonLoading={this.props.loading}
                 finishButtonClick={this.finishButtonClick}
                 firstHalfPrice={this.state.firstHalfPrice}
                 passengerPrice={this.state.passengerPrice}
@@ -149,4 +156,12 @@ class AddTrip extends Component {
   }
 }
 
-export default withStyles(addTripStyle)(AddTrip);
+const mapStateToProps = ({ tripStore }) => ({
+  trips: tripStore.trips,
+  errors: tripStore.errors,
+  loading: tripStore.loading
+});
+
+export default connect(mapStateToProps, { newTrip })(
+  withStyles(addTripStyle)(AddTrip)
+);

@@ -1,20 +1,20 @@
-import React from "react";
-import cx from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import cx from 'classnames';
+import PropTypes from 'prop-types';
 
 // material-ui components
-import withStyles from "material-ui/styles/withStyles";
-import Card from "material-ui/Card";
-import CardContent from "material-ui/Card/CardContent";
-import CardHeader from "material-ui/Card/CardHeader";
-import Typography from "material-ui/Typography";
-import Tabs from "material-ui/Tabs";
-import Tab from "material-ui/Tabs/Tab";
+import withStyles from 'material-ui/styles/withStyles';
+import Card from 'material-ui/Card';
+import CardContent from 'material-ui/Card/CardContent';
+import CardHeader from 'material-ui/Card/CardHeader';
+import Typography from 'material-ui/Typography';
+import Tabs from 'material-ui/Tabs';
+import Tab from 'material-ui/Tabs/Tab';
 
 // core components
-import Tasks from "components/Tasks/Tasks.jsx";
+import Tasks from 'components/Tasks/Tasks.jsx';
 
-import tasksCardStyle from "assets/jss/material-dashboard-pro-react/components/tasksCardStyle";
+import tasksCardStyle from 'assets/jss/material-dashboard-pro-react/components/tasksCardStyle';
 
 class TasksCard extends React.Component {
   state = {
@@ -27,40 +27,40 @@ class TasksCard extends React.Component {
     const { classes, headerColor, title, tabs, rtlActive } = this.props;
     const cardHeader =
       classes.cardHeader +
-      " " +
-      classes[headerColor + "CardHeader"] +
-      " " +
+      ' ' +
+      classes[headerColor + 'CardHeader'] +
+      ' ' +
       cx({
         [classes.cardHeaderRTL]: rtlActive
       });
     const cardTitle =
       classes.cardTitle +
-      " " +
+      ' ' +
       cx({
         [classes.cardTitleRTL]: rtlActive
       });
     const tabsContainer =
       classes.tabsContainer +
-      " " +
+      ' ' +
       cx({
         [classes.tabsContainerRTL]: rtlActive
       });
     const tabWrapper =
       classes.tabWrapper +
-      " " +
+      ' ' +
       cx({
         [classes.tabWrapperRTL]: rtlActive
       });
     const tabIcon =
       classes.tabIcon +
-      " " +
+      ' ' +
       cx({
         [classes.tabIconRTL]: rtlActive
       });
     const labelContainer = cx({ [classes.labelContainerRTL]: rtlActive });
     const labelIcon =
       classes.labelIcon +
-      " " +
+      ' ' +
       cx({
         [classes.labelIconRTL]: rtlActive
       });
@@ -125,18 +125,19 @@ class TasksCard extends React.Component {
 }
 
 TasksCard.defaultProps = {
-  headerColor: "purple"
+  headerColor: 'purple'
 };
 
 TasksCard.propTypes = {
   classes: PropTypes.object.isRequired,
   headerColor: PropTypes.oneOf([
-    "orange",
-    "green",
-    "red",
-    "blue",
-    "purple",
-    "rose"
+    'orange',
+    'green',
+    'red',
+    'blue',
+    'purple',
+    'rose',
+    'skyBlue'
   ]),
   title: PropTypes.string,
   tabs: PropTypes.arrayOf(

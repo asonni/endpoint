@@ -8,10 +8,11 @@ import {
   successColor,
   roseColor,
   infoColor,
-  warningColor
+  warningColor,
+  skyBlueColor
 } from '../main';
 
-const wizardStyle = {
+const wizardStyle = theme => ({
   wizardContainer: {},
   card: {
     display: 'inline-block',
@@ -165,6 +166,11 @@ const wizardStyle = {
     boxShadow:
       '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4)'
   },
+  skyBlue: {
+    backgroundColor: skyBlueColor,
+    boxShadow:
+      '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4)'
+  },
   footer: {
     padding: '0 15px'
   },
@@ -180,7 +186,19 @@ const wizardStyle = {
       content: '" "'
     },
     clear: 'both'
+  },
+  buttonWrapper: {
+    margin: theme.spacing.unit,
+    position: 'relative'
+  },
+  buttonProgress: {
+    color: '#F9FBE7',
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12
   }
-};
+});
 
 export default wizardStyle;

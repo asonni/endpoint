@@ -10,6 +10,7 @@ import {
   infoColor,
   roseColor,
   grayColor,
+  skyBlueColor,
   defaultFont
 } from '../main';
 
@@ -34,6 +35,9 @@ const tableStyle = theme => ({
   },
   gray: {
     color: grayColor
+  },
+  skyBlue: {
+    color: skyBlueColor
   },
   right: {
     textAlign: 'right'

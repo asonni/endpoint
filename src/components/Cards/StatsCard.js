@@ -71,7 +71,8 @@ StatsCard.propTypes = {
     'success',
     'info',
     'rose',
-    'gray'
+    'gray',
+    'skyBlue'
   ]),
   statLink: PropTypes.object,
   statText: PropTypes.node

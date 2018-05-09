@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 // material-ui components
-import withStyles from "material-ui/styles/withStyles";
-import Card from "material-ui/Card";
-import CardContent from "material-ui/Card/CardContent";
-import CardHeader from "material-ui/Card/CardHeader";
-import CardActions from "material-ui/Card/CardActions";
-import Typography from "material-ui/Typography";
+import withStyles from 'material-ui/styles/withStyles';
+import Card from 'material-ui/Card';
+import CardContent from 'material-ui/Card/CardContent';
+import CardHeader from 'material-ui/Card/CardHeader';
+import CardActions from 'material-ui/Card/CardActions';
+import Typography from 'material-ui/Typography';
 
-import chartCardStyle from "assets/jss/material-dashboard-pro-react/components/chartCardStyle";
+import chartCardStyle from 'assets/jss/material-dashboard-pro-react/components/chartCardStyle';
 
 class ChartCard extends React.Component {
   constructor(props) {
@@ -34,10 +34,10 @@ class ChartCard extends React.Component {
     } = this.props;
     const cardHeaderClasses =
       classes.cardHeader +
-      " " +
-      classes[chartColor + "CardHeader"] +
+      ' ' +
+      classes[chartColor + 'CardHeader'] +
       cx({
-        [" " + classes.moveChartUp]: this.state.hover && hover
+        [' ' + classes.moveChartUp]: this.state.hover && hover
       });
     var addHoverEvent = {};
     if (hover) {
@@ -76,11 +76,11 @@ class ChartCard extends React.Component {
                 <this.props.statIcon
                   className={
                     classes.cardStatsIcon +
-                    " " +
-                    classes[statIconColor + "CardStatsIcon"]
+                    ' ' +
+                    classes[statIconColor + 'CardStatsIcon']
                   }
                 />
-              ) : null}{" "}
+              ) : null}{' '}
               {statLink !== undefined ? (
                 <a href={statLink.href} className={classes.cardStatsLink}>
                   {statLink.text}
@@ -97,8 +97,8 @@ class ChartCard extends React.Component {
 }
 
 ChartCard.defaultProps = {
-  statIconColor: "gray",
-  chartColor: "purple",
+  statIconColor: 'gray',
+  chartColor: 'purple',
   hover: false
 };
 
@@ -109,21 +109,23 @@ ChartCard.propTypes = {
   text: PropTypes.node,
   statIcon: PropTypes.func,
   statIconColor: PropTypes.oneOf([
-    "warning",
-    "primary",
-    "danger",
-    "success",
-    "info",
-    "rose",
-    "gray"
+    'warning',
+    'primary',
+    'danger',
+    'success',
+    'info',
+    'rose',
+    'gray',
+    'skyBlue'
   ]),
   chartColor: PropTypes.oneOf([
-    "orange",
-    "green",
-    "red",
-    "blue",
-    "purple",
-    "rose"
+    'orange',
+    'green',
+    'red',
+    'blue',
+    'purple',
+    'rose',
+    'skyBlue'
   ]),
   statLink: PropTypes.object,
   statText: PropTypes.node,

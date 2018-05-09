@@ -9,7 +9,8 @@ import {
   infoColor,
   successColor,
   warningColor,
-  dangerColor
+  dangerColor,
+  skyBlueColor
 } from '../main';
 
 const iconButtonStyle = {
@@ -109,6 +110,16 @@ const iconButtonStyle = {
         '0 14px 26px -12px rgba(233, 30, 99, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(233, 30, 99, 0.2)'
     }
   },
+  skyBlue: {
+    backgroundColor: skyBlueColor,
+    boxShadow:
+      '0 2px 2px 0 rgba(0, 188, 212, 0.14), 0 3px 1px -2px rgba(0, 188, 212, 0.2), 0 1px 5px 0 rgba(0, 188, 212, 0.12)',
+    '&:hover': {
+      backgroundColor: skyBlueColor,
+      boxShadow:
+        '0 14px 26px -12px rgba(0, 188, 212, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 188, 212, 0.2)'
+    }
+  },
   defaultNoBackground: {
     '&,&:hover,&:focus': {
       color: grayColor,
@@ -154,6 +165,13 @@ const iconButtonStyle = {
   roseNoBackground: {
     '&,&:hover,&:focus': {
       color: roseColor,
+      boxShadow: 'none',
+      backgroundColor: 'transparent'
+    }
+  },
+  skyBlueNoBackground: {
+    '&,&:hover,&:focus': {
+      color: skyBlueColor,
       boxShadow: 'none',
       backgroundColor: 'transparent'
     }

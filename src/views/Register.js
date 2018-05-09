@@ -337,7 +337,7 @@ class Register extends Component {
                         className={`${classes.center} ${classes.buttonWrapper}`}
                       >
                         <Button
-                          color="rose"
+                          color="skyBlue"
                           type="submit"
                           disabled={pristine || submitting || loading}
                         >

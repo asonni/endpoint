@@ -2,7 +2,13 @@
 // // // Checkbox, Radio and Switch styles
 // #############################
 
-import { primaryColor, dangerColor, roseColor, grayColor } from './main';
+import {
+  primaryColor,
+  dangerColor,
+  // roseColor,
+  grayColor,
+  skyBlueColor
+} from './main';
 
 const customCheckboxRadioSwitch = {
   checkboxAndRadio: {
@@ -116,16 +122,16 @@ const customCheckboxRadioSwitch = {
       transition: 'all 0.2s'
     },
     '&:hover': {
-      color: roseColor,
+      color: skyBlueColor,
       '& > span:first-child': {
-        borderColor: roseColor
+        borderColor: skyBlueColor
       }
     }
   },
   iconCheckboxChecked: {
-    color: roseColor,
+    color: skyBlueColor,
     '& > span:first-child': {
-      borderColor: roseColor
+      borderColor: skyBlueColor
     }
   },
   iconCheckboxIcon: {

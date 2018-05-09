@@ -11,6 +11,7 @@ import {
   successColor,
   warningColor,
   dangerColor,
+  skyBlueColor,
   boxShadow,
   drawerWidth,
   transition
@@ -78,6 +79,11 @@ const headerStyle = theme => ({
   },
   danger: {
     backgroundColor: dangerColor,
+    color: '#FFFFFF',
+    ...defaultBoxShadow
+  },
+  skyBlue: {
+    backgroundColor: skyBlueColor,
     color: '#FFFFFF',
     ...defaultBoxShadow
   },

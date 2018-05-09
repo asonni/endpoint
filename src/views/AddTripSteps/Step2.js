@@ -148,7 +148,7 @@ class Step2 extends Component {
     } else {
       this.setState({ open: false });
       if (
-        service === 'packageDelivery' &&
+        service === 'package' &&
         firstHalfPriceState === 'success' &&
         additionalHalfPriceState === 'success'
       ) {
@@ -251,9 +251,7 @@ class Step2 extends Component {
             {service ? (
               <Fragment>
                 <GridContainer
-                  justify={
-                    service === 'packageDelivery' ? 'center' : 'space-between'
-                  }
+                  justify={service === 'package' ? 'center' : 'space-between'}
                 >
                   {(service === 'carPool' || service === 'both') && (
                     <ItemGrid xs={12} sm={12} md={4}>
@@ -290,7 +288,7 @@ class Step2 extends Component {
                       />
                     </ItemGrid>
                   )}
-                  {(service === 'packageDelivery' || service === 'both') && (
+                  {(service === 'package' || service === 'both') && (
                     <Fragment>
                       <ItemGrid xs={12} sm={12} md={4}>
                         <CustomInput2
@@ -456,10 +454,8 @@ class Step2 extends Component {
                     <Radio
                       tabIndex={-1}
                       name="travel-type"
-                      checked={service === 'packageDelivery'}
-                      onClick={() =>
-                        handleStateChange('service', 'packageDelivery')
-                      }
+                      checked={service === 'package'}
+                      onClick={() => handleStateChange('service', 'package')}
                       checkedIcon={
                         <i
                           className={`fas fa-box ${classes.iconCheckboxIcon}`}

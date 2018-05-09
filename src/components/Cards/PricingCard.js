@@ -74,7 +74,8 @@ PricingCard.propTypes = {
     'danger',
     'rose',
     'gray',
-    'white'
+    'white',
+    'skyBlue'
   ]),
   plain: PropTypes.bool,
   footer: PropTypes.node,
