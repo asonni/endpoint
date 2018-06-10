@@ -247,7 +247,7 @@ class Home extends Component {
               customCardTitleClasses={classes.cardTitle}
               customCardClasses={classes.cardClasses}
               content={
-                <GridContainer justify="space-between">
+                <GridContainer justify="center">
                   <ItemGrid xs={12} sm={12} md={4}>
                     <FormControl
                       fullWidth
@@ -257,80 +257,7 @@ class Home extends Component {
                         htmlFor="simple-select"
                         className={classes.selectLabel}
                       >
-                        {I18n.t('chooseTripType.label', { lng })}
-                      </InputLabel>
-                      <Select
-                        MenuProps={{ className: classes.selectMenu }}
-                        classes={{
-                          select: classes.select
-                        }}
-                        value={this.state.simpleSelect}
-                        onChange={this.handleSimple}
-                        inputProps={{
-                          name: 'simpleSelect',
-                          id: 'simple-select'
-                        }}
-                      >
-                        <MenuItem
-                          disabled
-                          classes={{
-                            root:
-                              lng === 'ar'
-                                ? classes.selectMenuItemRTL
-                                : classes.selectMenuItem
-                          }}
-                        >
-                          {I18n.t('chooseTripType.label', { lng })}
-                        </MenuItem>
-                        <MenuItem
-                          classes={{
-                            root:
-                              lng === 'ar'
-                                ? classes.selectMenuItemRTL
-                                : classes.selectMenuItem,
-                            selected: classes.selectMenuItemSelected
-                          }}
-                          value="2"
-                        >
-                          All
-                        </MenuItem>
-                        <MenuItem
-                          classes={{
-                            root:
-                              lng === 'ar'
-                                ? classes.selectMenuItemRTL
-                                : classes.selectMenuItem,
-                            selected: classes.selectMenuItemSelected
-                          }}
-                          value="3"
-                        >
-                          Land
-                        </MenuItem>
-                        <MenuItem
-                          classes={{
-                            root:
-                              lng === 'ar'
-                                ? classes.selectMenuItemRTL
-                                : classes.selectMenuItem,
-                            selected: classes.selectMenuItemSelected
-                          }}
-                          value="4"
-                        >
-                          Flight
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
-                  </ItemGrid>
-                  <ItemGrid xs={12} sm={12} md={4}>
-                    <FormControl
-                      fullWidth
-                      className={classes.selectFormControl}
-                    >
-                      <InputLabel
-                        htmlFor="simple-select"
-                        className={classes.selectLabel}
-                      >
-                        {I18n.t('tripFrom.label', { lng })}
+                        {I18n.t('from.label', { lng })}
                       </InputLabel>
                       <Select
                         MenuProps={{
@@ -355,7 +282,7 @@ class Home extends Component {
                                 : classes.selectMenuItem
                           }}
                         >
-                          {I18n.t('tripFrom.label', { lng })}
+                          {I18n.t('from.label', { lng })}
                         </MenuItem>
                         <MenuItem
                           classes={{
@@ -471,80 +398,15 @@ class Home extends Component {
                       </Select>
                     </FormControl>
                   </ItemGrid>
-                  <GridContainer justify="center">
-                    <ItemGrid xs={12} sm={12} md={4}>
-                      <div className={classes.customButtonClass}>
-                        <Button fullWidth color="skyBlue">
-                          <i className="material-icons">search</i>{' '}
-                          {I18n.t('search.label', { lng })}
-                        </Button>
-                      </div>
-                    </ItemGrid>
-                  </GridContainer>
+                  <ItemGrid xs={12} sm={12} md={1}>
+                    {/* <div className={classes.customButtonClass}> */}
+                    <Button color="skyBlue">
+                      <i className="material-icons">search</i>
+                    </Button>
+                    {/* </div> */}
+                  </ItemGrid>
                 </GridContainer>
               }
-            />
-          </ItemGrid>
-        </GridContainer>
-        <GridContainer>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={LocalShipping}
-              iconColor="skyBlue"
-              title={I18n.t('inboundTrips.label', { lng })}
-              description="20"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
-            />
-          </ItemGrid>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={LocalAirport}
-              iconColor="skyBlue"
-              title={I18n.t('outboundTrips.label', { lng })}
-              description="10"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
-            />
-          </ItemGrid>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={LocalTaxi}
-              iconColor="skyBlue"
-              title={I18n.t('localTrips.label', { lng })}
-              description="200"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
-            />
-          </ItemGrid>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={LocalAirport}
-              iconColor="skyBlue"
-              title={I18n.t('internationalTrips.label', { lng })}
-              description="150"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
-            />
-          </ItemGrid>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={LocalAirport}
-              iconColor="skyBlue"
-              title={I18n.t('tripsByAir.label', { lng })}
-              description="12"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
-            />
-          </ItemGrid>
-          <ItemGrid xs={12} sm={6} md={6} lg={4}>
-            <StatsCard
-              icon={DirectionsCar}
-              iconColor="skyBlue"
-              title={I18n.t('tripsByLand.label', { lng })}
-              description="9"
-              rtlActive={lng === 'ar'}
-              small={lng === 'ar' ? 'الف' : 'K'}
             />
           </ItemGrid>
         </GridContainer>
@@ -588,7 +450,7 @@ class Home extends Component {
                         lng === 'ar' ? [0, 1, 2, 3, 4] : [2, 3, 4]
                       }
                       tableHead={[
-                        I18n.t('tripFrom.label', { lng }),
+                        I18n.t('from.label', { lng }),
                         I18n.t('to.label', { lng }),
                         I18n.t('profilePicture.label', { lng }),
                         I18n.t('rating.label', { lng }),
@@ -918,6 +780,68 @@ class Home extends Component {
                   </ItemGrid>
                 </GridContainer>
               }
+            />
+          </ItemGrid>
+        </GridContainer>
+        <GridContainer>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={LocalShipping}
+              iconColor="skyBlue"
+              title={I18n.t('inboundTrips.label', { lng })}
+              description="20"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
+            />
+          </ItemGrid>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={LocalAirport}
+              iconColor="skyBlue"
+              title={I18n.t('outboundTrips.label', { lng })}
+              description="10"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
+            />
+          </ItemGrid>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={LocalTaxi}
+              iconColor="skyBlue"
+              title={I18n.t('localTrips.label', { lng })}
+              description="200"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
+            />
+          </ItemGrid>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={LocalAirport}
+              iconColor="skyBlue"
+              title={I18n.t('internationalTrips.label', { lng })}
+              description="150"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
+            />
+          </ItemGrid>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={LocalAirport}
+              iconColor="skyBlue"
+              title={I18n.t('tripsByAir.label', { lng })}
+              description="12"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
+            />
+          </ItemGrid>
+          <ItemGrid xs={12} sm={6} md={6} lg={4}>
+            <StatsCard
+              icon={DirectionsCar}
+              iconColor="skyBlue"
+              title={I18n.t('tripsByLand.label', { lng })}
+              description="9"
+              rtlActive={lng === 'ar'}
+              small={lng === 'ar' ? 'الف' : 'K'}
             />
           </ItemGrid>
         </GridContainer>

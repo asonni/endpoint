@@ -6,8 +6,8 @@ import {
   primaryColor,
   dangerColor,
   // roseColor,
-  grayColor,
-  skyBlueColor
+  grayColor
+  // skyBlueColor
 } from './main';
 
 const customCheckboxRadioSwitch = {
@@ -122,16 +122,16 @@ const customCheckboxRadioSwitch = {
       transition: 'all 0.2s'
     },
     '&:hover': {
-      color: skyBlueColor,
+      color: '#ff4600',
       '& > span:first-child': {
-        borderColor: skyBlueColor
+        borderColor: '#ff4600'
       }
     }
   },
   iconCheckboxChecked: {
-    color: skyBlueColor,
+    color: '#ff4600',
     '& > span:first-child': {
-      borderColor: skyBlueColor
+      borderColor: '#ff4600'
     }
   },
   iconCheckboxIcon: {

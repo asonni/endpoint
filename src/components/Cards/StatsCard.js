@@ -58,7 +58,8 @@ StatsCard.propTypes = {
     'red',
     'blue',
     'purple',
-    'rose'
+    'rose',
+    'skyBlue'
   ]),
   title: PropTypes.node,
   description: PropTypes.node,

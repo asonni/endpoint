@@ -21,7 +21,8 @@ const customInputStyle = {
       height: '1px !important'
     },
     '&:after': {
-      backgroundColor: primaryColor,
+      // backgroundColor: primaryColor,
+      backgroundColor: '#004871',
       transition: '0.3s ease all'
     }
   },

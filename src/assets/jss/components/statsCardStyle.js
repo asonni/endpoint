@@ -4,7 +4,7 @@
 
 import {
   card,
-  cardHeader,
+  cardHeaderSM,
   defaultFont,
   orangeCardHeader,
   greenCardHeader,
@@ -27,12 +27,12 @@ import {
 const statsCardStyle = {
   card,
   cardHeader: {
-    ...cardHeader,
+    ...cardHeaderSM,
     float: 'left',
     textAlign: 'center'
   },
   cardHeaderRTL: {
-    ...cardHeader,
+    ...cardHeaderSM,
     float: 'right',
     textAlign: 'center'
   },
@@ -46,12 +46,14 @@ const statsCardStyle = {
   cardContent: {
     textAlign: 'right',
     paddingTop: '10px',
-    padding: '15px 20px'
+    padding: '15px 20px',
+    paddingBottom: '5px!important'
   },
   cardContentRTL: {
     textAlign: 'left',
     paddingTop: '10px',
-    padding: '15px 20px'
+    padding: '15px 20px',
+    paddingBottom: '5px!important'
   },
   cardIcon: {
     width: '40px',

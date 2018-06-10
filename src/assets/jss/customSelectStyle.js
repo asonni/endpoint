@@ -2,7 +2,7 @@
 // // // CustomSelects styles
 // #############################
 
-import { primaryColor, primaryBoxShadow } from './main';
+import { primaryBoxShadow } from './main';
 
 const customSelectStyle = {
   select: {
@@ -24,7 +24,7 @@ const customSelectStyle = {
         height: '1px !important'
       },
       '&:after': {
-        backgroundColor: primaryColor
+        backgroundColor: '#004871'
       }
     }
   },
@@ -79,7 +79,7 @@ const customSelectStyle = {
     whiteSpace: 'nowrap',
     color: '#333',
     '&:hover': {
-      backgroundColor: primaryColor,
+      backgroundColor: '#004871',
       color: '#FFFFFF',
       ...primaryBoxShadow
     }
@@ -98,13 +98,13 @@ const customSelectStyle = {
     whiteSpace: 'nowrap',
     color: '#333',
     '&:hover': {
-      backgroundColor: primaryColor,
+      backgroundColor: '#004871',
       color: '#FFFFFF',
       ...primaryBoxShadow
     }
   },
   selectMenuItemSelected: {
-    backgroundColor: primaryColor + '!important',
+    backgroundColor: '#004871' + '!important',
     color: '#FFFFFF'
   }
 };

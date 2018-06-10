@@ -15,6 +15,7 @@ const ar = {
     whereWouldYouLikeToShip: { label: 'أين تريد أن تشحن؟' },
     chooseTripType: { label: 'اختر نوع الرحلة' },
     tripFrom: { label: 'رحلة من' },
+    from: { label: 'من' },
     to: { label: 'إلى' },
     search: { label: 'بحث' },
     inboundTrips: { label: 'الرحلات الداخلية' },
@@ -149,7 +150,8 @@ const ar = {
     },
     meetingPoint: {
       label: 'نقطة الالتقاء',
-      require: 'الرجاء ادخال نقطة الالتقاء'
+      require: 'الرجاء ادخال نقطة الالتقاء',
+      length: 'يجب ان تكون نقطة الالتقاء مكونة من 5 احرف علي الاقل'
     },
     meetingTime: {
       label: 'وقت الالتقاء',
@@ -189,7 +191,7 @@ const ar = {
       label: 'تعذر العثور على المستخدم من البريد الإلكتروني المدرج'
     },
     missingInformation: { label: 'معلومات مفقودة' },
-    passwordNotUpdaated: {
+    passwordNotUpdated: {
       label: 'تعذر تحديث كلمة المرور. معلومات غير صحيحة'
     },
     missingStartPoint: {

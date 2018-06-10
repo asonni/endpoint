@@ -11,10 +11,11 @@ const en = {
     addTrip: { label: 'Add Trip' },
     myAccount: { label: 'My Account' },
     // Content Translations
-    findTrip: { label: 'Find Trip' },
+    findTrip: { label: 'Find a trip' },
     whereWouldYouLikeToShip: { label: 'Where would you like to ship?' },
     chooseTripType: { label: 'Choose Trip Type' },
     tripFrom: { label: 'Trip From' },
+    from: { label: 'From' },
     to: { label: 'To' },
     search: { label: 'Search' },
     inboundTrips: { label: 'Inbound Trips' },
@@ -150,7 +151,8 @@ const en = {
     },
     meetingPoint: {
       label: 'Meeting Point',
-      require: 'Please enter the meeting point'
+      require: 'Please enter the meeting point',
+      length: 'Meeting point must be at least 5 characters'
     },
     meetingTime: {
       label: 'Meeting Time',
@@ -185,7 +187,7 @@ const en = {
     alreadyVerified: { label: 'Account already verified' },
     emailNotFound: { label: 'Could not find user with provided email' },
     missingInformation: { label: 'Information missing' },
-    passwordNotUpdaated: {
+    passwordNotUpdated: {
       label: 'Password could not be updated. Incorrect information.'
     },
     missingStartPoint: {

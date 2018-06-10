@@ -32,10 +32,12 @@ const wizardStyle = theme => ({
     padding: '25px 0 35px'
   },
   title: {
-    margin: '0'
+    margin: '0',
+    color: '#004871'
   },
   subtitle: {
-    margin: '5px 0 0'
+    margin: '5px 0 0',
+    color: '#004871'
   },
   wizardNavigation: {
     position: 'relative'

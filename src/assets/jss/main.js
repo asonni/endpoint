@@ -83,10 +83,11 @@ const defaultFont = {
   fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
   // fontFamily: '"JFFlat", sans-serif !important';
   fontWeight: '300',
-  lineHeight: '1.5em'
+  lineHeight: '1.5em',
+  color: '#004871'
 };
 
-const primaryColor = '#9c27b0';
+const primaryColor = '#004871';
 const warningColor = '#ff9800';
 const dangerColor = '#f44336';
 const successColor = '#4caf50';
@@ -163,6 +164,12 @@ const cardHeader = {
   padding: '15px'
 };
 
+const cardHeaderSM = {
+  margin: '-20px 15px 0',
+  borderRadius: '3px',
+  padding: '5px'
+};
+
 const defaultBoxShadow = {
   border: '0',
   borderRadius: '3px',
@@ -232,6 +239,7 @@ export {
   skyBlueCardHeader,
   cardActions,
   cardHeader,
+  cardHeaderSM,
   defaultBoxShadow,
   tooltip
 };

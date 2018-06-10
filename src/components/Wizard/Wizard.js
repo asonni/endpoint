@@ -274,13 +274,6 @@ class Wizard extends Component {
                 </Button>
               ) : null}
               {this.state.finishButton ? (
-                // <Button
-                //   color="skyBlue"
-                //   customClass={this.finishButtonClasses}
-                //   onClick={this.finishButtonClick}
-                // >
-                //   {I18n.t(this.props.finishButtonText, { lng })}
-                // </Button>
                 <div className={classes.buttonWrapper}>
                   <Button
                     color="skyBlue"

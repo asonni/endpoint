@@ -192,7 +192,10 @@ class Header extends Component {
       >
         <Toolbar className={classes.container}>
           <div className={classes.flex}>
-            <Button className={classes.title}>
+            <Button
+              className={classes.title}
+              onClick={() => this.props.history.push('/')}
+            >
               <img
                 alt="Addabba Logo"
                 style={{ width: '56%' }}

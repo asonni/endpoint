@@ -25,7 +25,8 @@ const headerStyle = theme => ({
     width: '100%',
     paddingTop: '10px',
     zIndex: '1029',
-    color: '#555555',
+    // color: '#555555',
+    color: '#004871',
     border: '0',
     borderRadius: '3px',
     padding: '10px 0',
@@ -48,7 +49,8 @@ const headerStyle = theme => ({
     fontSize: '18px',
     borderRadius: '3px',
     textTransform: 'none',
-    color: 'rgba(0, 0, 0, 0.54)',
+    // color: 'rgba(0, 0, 0, 0.54)',
+    color: '#004871',
     '&:hover,&:focus': {
       background: 'transparent',
       color: '#000'
@@ -136,7 +138,8 @@ const headerStyle = theme => ({
     }
   },
   navLink: {
-    color: 'rgba(0, 0, 0, 0.54)',
+    // color: 'rgba(0, 0, 0, 0.54)',
+    color: '#004871',
     margin: '0 5px',
     paddingTop: '15px',
     paddingBottom: '15px',
@@ -151,7 +154,8 @@ const headerStyle = theme => ({
     textDecoration: 'none',
     '&:hover,&:focus': {
       // color: '#FFFFFF',
-      color: 'rgba(0, 0, 0, 0.54)',
+      // color: 'rgba(0, 0, 0, 0.54)',
+      color: '#004871',
       background: 'rgba(200, 200, 200, 0.2)'
     }
   },
